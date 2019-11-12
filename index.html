@@ -29,32 +29,36 @@ function evalUpdate() {
     var doe_003 = document.getElementsByName("doe_inst_tech_serve")[0].value;
     var doe_004 = document.getElementsByName("doe_inst_info_tech")[0].value;
     var doe_005 = document.getElementsByName("doe_inst_coll_mangr")[0].value;
-    var doe_006 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_007 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_008 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_009 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_010 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_011 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_012 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_013 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_014 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_015 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_016 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_017 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_018 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_019 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_020 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_021 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_022 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_023 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_024 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_025 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_026 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_027 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_028 = document.getElementsByName("doe_inst_other")[0].value;
-    var doe_029 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_006 = document.getElementsByName("doe_inst_other_primary")[0].value;
+    var doe_007 = document.getElementsByName("doe_res_int_fund")[0].value;
+    var doe_008 = document.getElementsByName("doe_res_ext_fund")[0].value;
+    var doe_009 = document.getElementsByName("doe_res_gifts")[0].value;
+    var doe_010 = document.getElementsByName("doe_res_no_fund")[0].value;
+    var doe_011 = document.getElementsByName("doe_serv_pub")[0].value;
+    var doe_012 = document.getElementsByName("doe_serv_prof")[0].value;
+    var doe_013 = document.getElementsByName("doe_serv_coll_dept")[0].value;
+    var doe_014 = document.getElementsByName("doe_serv_univ")[0].value;
+    var doe_015 = document.getElementsByName("doe_serv_patient")[0].value;
+    var doe_016 = document.getElementsByName("doe_serv_qaa")[0].value;
+    var doe_017 = document.getElementsByName("doe_serv_clinic_serv")[0].value;
+    var doe_018 = document.getElementsByName("doe_serv_clinic_contract")[0].value;
+    var doe_019 = document.getElementsByName("doe_serv_hosp")[0].value;
+    var doe_020 = document.getElementsByName("doe_admin_chair")[0].value;
+    var doe_021 = document.getElementsByName("doe_admin_other_1")[0].value;
+    var doe_022 = document.getElementsByName("doe_admin_univ_lv")[0].value;
+    var doe_023 = document.getElementsByName("doe_admin_cdd")[0].value;
+    var doe_024 = document.getElementsByName("doe_admin_md")[0].value;
+    var doe_025 = document.getElementsByName("doe_admin_other_pos")[0].value;
+    var doe_026 = document.getElementsByName("doe_admin_other_2")[0].value;
+    var doe_027 = document.getElementsByName("doe_admin_gift")[0].value;
+    var doe_028 = document.getElementsByName("doe_profdev_sabb")[0].value;
+    var doe_029 = document.getElementsByName("doe_profdev_leave")[0].value;
+    var doe_030 = document.getElementsByName("doe_profdev_dev")[0].value;
 
-    var doe_total = +doe_001 + +doe_002 + +doe_003 + +doe_004 + +doe_005 + +doe_006 + +doe_007 + +doe_008 + +doe_009 + +doe_010 + +doe_011 + +doe_012 + +doe_013 + +doe_014 + +doe_015 + +doe_016 + +doe_017 + +doe_018 + +doe_019 + +doe_020 + +doe_021 + +doe_022 + +doe_023 + +doe_024 + +doe_025 + +doe_026 + +doe_027 + +doe_028 + +doe_029;
+
+
+    // add up all the DOE numbers
+    var doe_total = +doe_001 + +doe_002 + +doe_003 + +doe_004 + +doe_005 + +doe_006 + +doe_007 + +doe_008 + +doe_009 + +doe_010 + +doe_011 + +doe_012 + +doe_013 + +doe_014 + +doe_015 + +doe_016 + +doe_017 + +doe_018 + +doe_019 + +doe_020 + +doe_021 + +doe_022 + +doe_023 + +doe_024 + +doe_025 + +doe_026 + +doe_027 + +doe_028 + +doe_029 + +doe_030;
 
     if (doe_total == 100) {
        document.getElementById("submit_button").innerHTML = "<div id=\"form_button\"><button type=\"button\" onclick=\"alert('Generating the form...')\">Generate Evaluation Form</button></div>";
@@ -137,7 +141,6 @@ function evalUpdate() {
 
 <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
 <style>
-
 body {
         margin: 0px;
         font-family: 'Muli', sans-serif;
@@ -179,8 +182,8 @@ body {
      position: fixed;
      top: 0px;
      right: 0px;
-background: #1897d4;
-padding: 22px;
+     background: #1897d4;
+     padding: 22px;
 }
 button {
      display: block;
@@ -188,30 +191,41 @@ button {
      margin-left: auto;
      margin-right: auto;
 }
-
 h2 {
-   padding-left: 25px;
+     padding-left: 25px;
 }
-
 label:after {
-   content: ' : ';
+     content: ' : ';
 }
-
 label {
-   font-weight: bold;
+     font-weight: bold;
 }
-
 #generator_form {
-   padding-bottom: 10px;
-   border-bottom: 1px solid #1B365D;
-   background: #a5acaf;
+     padding-bottom: 10px;
+     border-bottom: 1px solid #1B365D;
+     background: #a5acaf;
 }
-
 #form_help {
-   background: #C8C8C7;
-   margin-bottom: 0px;
+     background: #C8C8C7;
+     margin-bottom: 0px;
+}
+.footer-list {
+     list-style-type:none; color: white;text-align:center;
 }
 
+.footer-list-item {
+     display: inline-block;
+     padding-left: 5px;
+     padding-right: 5px;
+}
+.footer-text-center {
+     text-align:center;
+}
+#footer {
+     background:#1B365D;
+     position:absolute;
+     width:100%;
+}
 </style>
 </head>
 <body>
@@ -300,48 +314,48 @@ label {
 </ul>
 </ul>
 <ul><h4>Section  II.  Research</h4>
-<li>a. Internally funded research <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>b. Externally funded research <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>c. Gifts <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>d. Non-funded research (general research efforts) <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>a. Internally funded research <input type="number" name="doe_res_int_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>b. Externally funded research <input type="number" name="doe_res_ext_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>c. Gifts <input type="number" name="doe_res_gifts" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>d. Non-funded research (general research efforts) <input type="number" name="doe_res_no_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 </ul>
 <ul><h4>Section  III. Service</h4>
-<li>a. Service to Public <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>b. Service to Professions <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>c. Service to Institution <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>a. Service to Public <input type="number" name="doe_serv_pub" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li> 
+<li>b. Service to Professions <input type="number" name="doe_serv_prof" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>c. Service to Institution</li>
 <ul>
-<li>College and Department</li>
-<li>University Level</li>
+<li>College and Department <input type="number" name="doe_serv_coll_dept" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>University Level <input type="number" name="doe_serv_univ" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 </ul>
 <li>d. Patient Care Unrelated to Instruction</li>
 <ul>
-<li>Direct Patient Care and Clinical Service <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Quality Assurance Activities <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Other Clinical Services <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Clinical Contract Work or Other Cash Income <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Hospital Physician Service for all Patients <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Direct Patient Care and Clinical Service <input type="number" name="doe_serv_patient" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Quality Assurance Activities <input type="number" name="doe_serv_qaa" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Other Clinical Services <input type="number" name="doe_serv_clinic_serv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Clinical Contract Work or Other Cash Income <input type="number" name="doe_serv_clinic_contract" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Hospital Physician Service for all Patients <input type="number" name="doe_serv_hosp" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 </ul>
 </ul>
 <ul><h4>Section  IV. Administration</h4>
 <li>a. College and Department</li>
 <ul>
- <li>Chair Vice Chair/equivalent Academic Division Director/Chief Other position (e.g., DGS, DUS) <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
- <li>Other administrative activities <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+ <li>Chair Vice Chair/equivalent Academic Division Director/Chief Other position (e.g., DGS, DUS) <input type="number" name="doe_admin_chair" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+ <li>Other administrative activities <input type="number" name="doe_admin_other_1" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 </ul>
-<li>b. University Level <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>b. University Level <input type="number" name="doe_admin_univ_lv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 <li>c. UK Health Care Enterprise</li>
 <ul>
-<li>Clinical Division Director/Chief <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Medical Director <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Other Position <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Other administrative activities <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Clinical Division Director/Chief <input type="number" name="doe_admin_cdd" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Medical Director <input type="number" name="doe_admin_md" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Other Position <input type="number" name="doe_admin_other_pos" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Other administrative activities <input type="number" name="doe_admin_other_2" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 </ul>
-<li>d. Fund Raising (Private Gift Solicitation) <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>d. Fund Raising (Private Gift Solicitation) <input type="number" name="doe_admin_gift" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 </ul>
 <ul><h4>Section  V.  Professional Development</h4>
-<li>a. Sabbatical Leave <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>b. Other Approved Leave (e.g. TDL, educational, scholarly) <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>c. Other Development (e.g. conferences, networking) <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>a. Sabbatical Leave <input type="number" name="doe_profdev_sabb" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>b. Other Approved Leave (e.g. TDL, educational, scholarly) <input type="number" name="doe_profdev_leave" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>c. Other Development (e.g. conferences, networking) <input type="number" name="doe_profdev_dev" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 </ul>
 </p>
 
@@ -365,30 +379,32 @@ label {
 
 <!-- add footer -->
 
-    <div id="footer" style="background:#1B365D;position:absolute;width:100%;">
-        <div class="row text-center mt-large">
-            <div class="col-sm-12 text-center" style="text-align:center;">
-                <a class="uklib-footer-uklogo" href="http://uky.edu" title="University of Kentucky">
+    <div id="footer">
+        <div>
+            <div class="footer-text-center">
+                <a href="http://uky.edu" title="University of Kentucky">
                     <img src="http://libraries.uky.edu/images/uklogo.png" height="60" alt="University of Kentucky">
                 </a>
-                <a class="uklib-footer-fdlp" href="http://libguides.uky.edu/fedgov" title="This library is a Congressionally designated Regional Depository for U.S. Government Publications. Public access to the federal government publications collection is guaranteed by public law.">
+                <a href="http://libguides.uky.edu/fedgov" title="This library is a Congressionally designated Regional Depository for U.S. Government Publications. Public access to the federal government publications collection is guaranteed by public law.">
                     <img src="http://libraries.uky.edu/images/fdlp.png" alt="Federal Depository Library">
                 </a>
             </div>
         </div>
         <div class="row">
-            <div class="col mt-large mb-medium text-center">
-                <ul class="list-inline uklib-footer-list" style="list-style-type:none; color: white;text-align:center;">
-                    <li style="display: inline-block;padding-left: 5px;padding-right: 5px;">© <a href="http://uky.edu" title="University of Kentucky">University of Kentucky</a></li>
-                    <li style="display: inline-block;padding-left: 5px;padding-right: 5px;">An Equal Opportunity University</li>
-                    <li><a href="http://www.uky.edu/accreditation/" title="Accreditation">Accreditation</a></li>
-                    <li style="display: inline-block;padding-left: 5px;padding-right: 5px;"><a href="https://directory.uky.edu/" title="Directory">Directory</a></li>
+            <div>
+                <ul class="footer-list">
+                    <li class="footer-list-item">© <a href="http://uky.edu" title="University of Kentucky">University of Kentucky</a></li>
+                    <li class="footer-list-item">An Equal Opportunity University</li>
+                    <li class="footer-list-item"><a href="http://www.uky.edu/accreditation/" title="Accreditation">Accreditation</a></li>
+                    <li class="footer-list-item"><a href="https://directory.uky.edu/" title="Directory">Directory</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
 
+
 </div>
 </body>
 </html>
+
