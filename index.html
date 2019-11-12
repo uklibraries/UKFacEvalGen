@@ -1,0 +1,335 @@
+<html>
+<head>
+<title>UKL Evaluation Form Generator</title>
+<script>
+
+// Copyright University of Kentucky Libraries, 2020
+// Authors: Kathryn Lybarger & Eric Weig
+
+function formChanged() {
+
+    // set flag for console output
+    // set to 1 in order to view output in console
+    var isConsole = 1;
+
+    // set variables
+    var personalName = document.getElementsByName("personalname")[0].value;
+    var superVisor = document.getElementsByName("supervisor")[0].value;
+    var jobTitle = document.getElementsByName("jobtitle")[0].value;
+    var divDpt = document.getElementsByName("division_department")[0].value;
+    var otherEvals = document.getElementsByName("other_evaluators")[0].value;
+    var rank = document.getElementsByName("rank")[0].value;
+    var revYear = document.getElementsByName("review_year")[0].value;
+    var nxtPromo = document.getElementsByName("next_promo")[0].value;
+
+    var evaldata = {
+    ratings: [
+        'Unsatisfactory',
+        'Improvement Expected',
+        'Provisional',
+        'Solid',
+        'Distinguished'
+    ],
+    person: {
+        name: document.getElementsByName("personalname")[0].value,
+        job_title: document.getElementsByName("jobtitle")[0].value,
+        division: document.getElementsByName("division_department")[0].value,
+        supervisor: document.getElementsByName("supervisor")[0].value,
+        other_evaluators: document.getElementsByName("other_evaluators")[0].value,
+        rank: document.getElementsByName("rank")[0].value,
+        review_year: document.getElementsByName("review_year")[0].value,
+        next_pt_date: document.getElementsByName("next_promo")[0].value,
+    },
+    DOE: [
+         {
+               name: 'Instruction',
+               subcats: [
+                    {
+                         name: 'Technical Services',
+                         percent: '',
+                    },
+                 ]
+         },
+         {
+               name: 'Research',
+               subcats: [
+                    {
+                         name: 'Sponsed research',
+                         percent: '',
+                    },
+                    {
+                         name: 'Nonsponsored research',
+                         percent: '',
+                    },
+                  ]
+          },
+         ]
+     }
+       
+
+     if(isConsole) { 
+       // is the flag "up"? (i.e. > 0)
+      // print changes to console 
+      console.log('evaldata', evaldata);
+      }
+
+
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+<style>
+
+body {
+        margin: 0px;
+        font-family: 'Muli', sans-serif;
+}
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 0px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+#generator_form, #form_help {
+        padding: 25px;
+        background: #a5acaf;
+}
+#form_button {
+     position: fixed;
+     bottom: 0px;
+     right: 0px;
+background: #1897d4;
+padding: 25px;
+}
+button {
+     display: block;
+     text-align: center;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+h2 {
+   padding-left: 25px;
+}
+
+label:after {
+   content: ' : ';
+}
+
+label {
+   font-weight: bold;
+}
+
+#generator_form {
+   padding-bottom: 10px;
+   border-bottom: 1px solid #1B365D;
+   background: #a5acaf;
+}
+
+#form_help {
+   background: #C8C8C7;
+   margin-bottom: 0px;
+}
+
+</style>
+</head>
+<body>
+<div id="content">
+<!-- header start -->
+
+<div id="uk_branding" style="width:100%;height:65px;background:#1B365D;text-align:center;margin-left:auto;margin-right:auto;padding-left: 20px;"><a href="https://libraries.uky.edu/"><img width="180px" style="float: left;padding-top: 5px;padding-bottom: 5px;" src="http://libraries.uky.edu/images/libraries-white.png"></a></div>
+<h2>UK Libraries Evaluation Form Generator</h2>
+
+<!-- header end -->
+
+<!-- help section start -->
+
+<p id="form_help"><label for="help" style="color:#1897d4">HELP</label>  Fill in the following form fields.  If your DOE percentage equals 100%, a 'Generate Evaluation Form' button will appear at the bottom of this page.  Click on the button and your web browser will download your generated evaluation form.</p>
+
+<!-- help section end -->
+
+<!-- generator entry basic info form start -->
+<div id="generator_form">
+<div class="divTable">
+<div class="divTableBody">
+<div class="divTableRow">
+<div class="divTableCell">
+<label for="name">Name</label>
+</div><div class="divTableCell">
+<input type="text" name="personalname" onkeyup="formChanged()" onchange="formChanged()"/>
+</div>
+<div class="divTableCell">
+<label for="supervisor">Supervisor</label>
+</div><div class="divTableCell">
+<input type="text" name="supervisor" onkeyup="formChanged()" onchange="formChanged()"/>
+</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell"><label for="name">Job Title</label>
+</div><div class="divTableCell">
+<input type="text" name="jobtitle" onkeyup="formChanged()" onchange="formChanged()"/>
+</div>
+<div class="divTableCell"><label for="name">Other Evaluators</label>
+</div><div class="divTableCell">
+<input type="text" name="other_evaluators" onkeyup="formChanged()" onchange="formChanged()"/>
+</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell"><label for="name">Division / Department</label>
+</div><div class="divTableCell">
+<input type="text" name="division_department" onkeyup="formChanged()" onchange="formChanged()"/>
+</div>
+<div class="divTableCell"><label for="name">Rank</label>
+</div><div class="divTableCell">
+<input type="text" name="rank" onkeyup="formChanged()" onchange="formChanged()"/>
+</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell"><label for="name">Next Promotion / Tenure date</label>
+</div><div class="divTableCell">
+<input type="text" name="next_promo" onkeyup="formChanged()" onchange="formChanged()"/>
+</div>
+<div class="divTableCell"><label for="name">Review Year</label>
+</div><div class="divTableCell">
+<input type="text" name="review_year" onkeyup="formChanged()" onchange="formChanged()"/>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<!-- generator entry basic info form end -->
+
+<!-- distribution of effort start -->
+
+<div id="doe_form">
+
+<ul><h4>Section  I.   Instruction</h4>
+<li>f. Libraries - Primary Assignment</li>
+<ul>
+<li>Reference/Information Service <input type="number" name="doe_inst_ref_serve" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Library Instruction <input type="number" name="doe_inst_lib_inst" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Technical Services <input type="number" name="doe_inst_tech_serve" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Information Technology <input type="number" name="doe_inst_tech_serve" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Collection Management <input type="number" name="doe_inst_coll_mangr" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Administration (report in Sect IV)</li>
+<li>Other Primary Activities <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+</ul>
+</ul>
+<ul><h4>Section  II.  Research</h4>
+<li>a. Internally funded research <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>b. Externally funded research <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>c. Gifts <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>d. Non-funded research (general research efforts) <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+</ul>
+<ul><h4>Section  III. Service</h4>
+<li>a. Service to Public <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>b. Service to Professions <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>c. Service to Institution <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<ul>
+<li>College and Department</li>
+<li>University Level</li>
+</ul>
+<li>d. Patient Care Unrelated to Instruction</li>
+<ul>
+<li>Direct Patient Care and Clinical Service <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Quality Assurance Activities <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Other Clinical Services <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Clinical Contract Work or Other Cash Income <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Hospital Physician Service for all Patients <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+</ul>
+</ul>
+<ul><h4>Section  IV. Administration</h4>
+<li>a. College and Department</li>
+<ul>
+ <li>Chair Vice Chair/equivalent Academic Division Director/Chief Other position (e.g., DGS, DUS) <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+ <li>Other administrative activities <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+</ul>
+<li>b. University Level <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>c. UK Health Care Enterprise</li>
+<ul>
+<li>Clinical Division Director/Chief <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Medical Director <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Other Position <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>Other administrative activities <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+</ul>
+<li>d. Fund Raising (Private Gift Solicitation) <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+</ul>
+<ul><h4>Section  V.  Professional Development</h4>
+<li>a. Sabbatical Leave <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>b. Other Approved Leave (e.g. TDL, educational, scholarly) <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+<li>c. Other Development (e.g. conferences, networking) <input type="number" name="doe_inst_other" onkeyup="formChanged()" onchange="formChanged()"/></li>
+</ul>
+</p>
+
+
+
+
+
+
+<div id="doe_total"></div>
+
+<!-- distribution of effort end -->
+
+</div>
+<!-- generator entry form end -->
+
+
+
+<div id="form_button">
+<button type="button" onclick="alert('Generating the form...')">Generate Evaluation Form</button>
+</div>
+<!-- add footer -->
+
+    <div id="footer" style="background:#1B365D;position:absolute;width:100%;">
+        <div class="row text-center mt-large">
+            <div class="col-sm-12 text-center" style="text-align:center;">
+                <a class="uklib-footer-uklogo" href="http://uky.edu" title="University of Kentucky">
+                    <img src="http://libraries.uky.edu/images/uklogo.png" height="60" alt="University of Kentucky">
+                </a>
+                <a class="uklib-footer-fdlp" href="http://libguides.uky.edu/fedgov" title="This library is a Congressionally designated Regional Depository for U.S. Government Publications. Public access to the federal government publications collection is guaranteed by public law.">
+                    <img src="http://libraries.uky.edu/images/fdlp.png" alt="Federal Depository Library">
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-large mb-medium text-center">
+                <ul class="list-inline uklib-footer-list" style="list-style-type:none; color: white;text-align:center;">
+                    <li style="display: inline-block;padding-left: 5px;padding-right: 5px;">© <a href="http://uky.edu" title="University of Kentucky">University of Kentucky</a></li>
+                    <li style="display: inline-block;padding-left: 5px;padding-right: 5px;">An Equal Opportunity University</li>
+                    <li><a href="http://www.uky.edu/accreditation/" title="Accreditation">Accreditation</a></li>
+                    <li style="display: inline-block;padding-left: 5px;padding-right: 5px;"><a href="https://directory.uky.edu/" title="Directory">Directory</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
