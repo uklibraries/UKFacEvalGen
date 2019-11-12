@@ -54,6 +54,12 @@ function evalUpdate() {
     var doe_028 = document.getElementsByName("doe_inst_other")[0].value;
     var doe_029 = document.getElementsByName("doe_inst_other")[0].value;
 
+    var doe_total = +doe_001 + +doe_002 + +doe_003 + +doe_004 + +doe_005 + +doe_006 + +doe_007 + +doe_008 + +doe_009 + +doe_010 + +doe_011 + +doe_012 + +doe_013 + +doe_014 + +doe_015 + +doe_016 + +doe_017 + +doe_018 + +doe_019 + +doe_020 + +doe_021 + +doe_022 + +doe_023 + +doe_024 + +doe_025 + +doe_026 + +doe_027 + +doe_028 + +doe_029;
+
+    if (doe_total == 100) {
+       document.getElementById("submit_button").innerHTML = "<div id=\"form_button\"><button type=\"button\" onclick=\"alert('Generating the form...')\">Generate Evaluation Form</button></div>";
+    }
+
     var evaldata = {
     ratings: [
         'Unsatisfactory',
@@ -352,10 +358,11 @@ label {
 <!-- generator entry form end -->
 
 
-
-<div id="form_button">
-<button type="button" onclick="alert('Generating the form...')">Generate Evaluation Form</button>
+<div id="submit_button">
 </div>
+
+
+
 <!-- add footer -->
 
     <div id="footer" style="background:#1B365D;position:absolute;width:100%;">
