@@ -1,18 +1,19 @@
 <html>
 <head>
-<title>UKL Evaluation Form Generator</title>
-<script>
+<title>University of Kentucky Libraries Evaluation Form Generator</title>
+<script language="JavaScript">
 
 // Copyright University of Kentucky Libraries, 2020
 // Authors: Kathryn Lybarger & Eric Weig
+// License: https://creativecommons.org/licenses/by-sa/4.0/
 
 function evalUpdate() {
 
     // set flag for console output
-    // set to 1 in order to view output in console, else 0
+    // set to 1 in order to view output in console
     var isConsole = 1;
 
-    // set variables
+    // set variables for faculty info
     var personalName = document.getElementsByName("personalname")[0].value;
     var superVisor = document.getElementsByName("supervisor")[0].value;
     var jobTitle = document.getElementsByName("jobtitle")[0].value;
@@ -21,6 +22,37 @@ function evalUpdate() {
     var rank = document.getElementsByName("rank")[0].value;
     var revYear = document.getElementsByName("review_year")[0].value;
     var nxtPromo = document.getElementsByName("next_promo")[0].value;
+
+    // set variables for faculty DOE
+    var doe_001 = document.getElementsByName("doe_inst_ref_serve")[0].value;
+    var doe_002 = document.getElementsByName("doe_inst_lib_inst")[0].value;
+    var doe_003 = document.getElementsByName("doe_inst_tech_serve")[0].value;
+    var doe_004 = document.getElementsByName("doe_inst_info_tech")[0].value;
+    var doe_005 = document.getElementsByName("doe_inst_coll_mangr")[0].value;
+    var doe_006 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_007 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_008 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_009 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_010 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_011 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_012 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_013 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_014 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_015 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_016 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_017 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_018 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_019 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_020 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_021 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_022 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_023 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_024 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_025 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_026 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_027 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_028 = document.getElementsByName("doe_inst_other")[0].value;
+    var doe_029 = document.getElementsByName("doe_inst_other")[0].value;
 
     var evaldata = {
     ratings: [
@@ -45,8 +77,28 @@ function evalUpdate() {
                name: 'Instruction',
                subcats: [
                     {
+                         name: 'Reference Services',
+                         percent: doe_001,
+                    },
+                    {
+                         name: 'Library Instruction',
+                         percent: doe_002,
+                    },
+                    {
                          name: 'Technical Services',
-                         percent: '',
+                         percent: doe_003,
+                    },
+                    {
+                         name: 'Information Technology',
+                         percent: doe_004,
+                    },
+                    {
+                         name: 'Collection Management',
+                         percent: doe_005,
+                    },
+                    {
+                         name: 'Other Primary Activities',
+                         percent: doe_006,
                     },
                  ]
          },
@@ -68,7 +120,8 @@ function evalUpdate() {
        
 
      if(isConsole) { 
-      // echo changes in browser console 
+       // is the flag "up"? (i.e. > 0)
+      // print changes to console 
       console.log('evaldata', evaldata);
       }
 
@@ -118,10 +171,10 @@ body {
 }
 #form_button {
      position: fixed;
-     bottom: 0px;
+     top: 0px;
      right: 0px;
 background: #1897d4;
-padding: 25px;
+padding: 22px;
 }
 button {
      display: block;
@@ -234,7 +287,7 @@ label {
 <li>Reference/Information Service <input type="number" name="doe_inst_ref_serve" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 <li>Library Instruction <input type="number" name="doe_inst_lib_inst" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 <li>Technical Services <input type="number" name="doe_inst_tech_serve" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Information Technology <input type="number" name="doe_inst_tech_serve" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+<li>Information Technology <input type="number" name="doe_inst_info_tech" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 <li>Collection Management <input type="number" name="doe_inst_coll_mangr" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 <li>Administration (report in Sect IV)</li>
 <li>Other Primary Activities <input type="number" name="doe_inst_other" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
@@ -332,4 +385,3 @@ label {
 </div>
 </body>
 </html>
-
