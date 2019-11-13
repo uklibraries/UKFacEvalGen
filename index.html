@@ -60,9 +60,9 @@ function evalUpdate() {
     // add up all the DOE numbers
     var doe_total = +doe_001 + +doe_002 + +doe_003 + +doe_004 + +doe_005 + +doe_006 + +doe_007 + +doe_008 + +doe_009 + +doe_010 + +doe_011 + +doe_012 + +doe_013 + +doe_014 + +doe_015 + +doe_016 + +doe_017 + +doe_018 + +doe_019 + +doe_020 + +doe_021 + +doe_022 + +doe_023 + +doe_024 + +doe_025 + +doe_026 + +doe_027 + +doe_028 + +doe_029 + +doe_030;
 
-    if (doe_total == 100) {
-       document.getElementById("submit_button").innerHTML = "<div id=\"form_button\"><button type=\"button\" onclick=\"alert('Generating the form...')\">Generate Evaluation Form</button></div>";
-    }
+
+    // display current total for DOE numbers
+    document.getElementById("doe_total").innerHTML = doe_total;
 
     var evaldata = {
     ratings: [
@@ -127,7 +127,8 @@ function evalUpdate() {
           },
          ]
      }
-       
+
+
 
      if(isConsole) { 
       // print changes to console 
@@ -178,7 +179,7 @@ body {
         background: #a5acaf;
 }
 #form_button {
-       position: fixed;
+display: block;
        top: 0px;
        right: 0px;
        background: #1897d4;
@@ -196,6 +197,7 @@ h2 {
 label:after {
        content: ' : ';
 }
+
 label {
        font-weight: bold;
 }
@@ -204,9 +206,19 @@ label {
        border-bottom: 1px solid #1B365D;
        background: #a5acaf;
 }
+#doe_total {
+       float: right;
+       padding-right: 10px;
+       font-weight: bold;
+}
+#doe_total:before {
+       content: ' % total: ';
+}
+
 #form_help {
        background: #C8C8C7;
        margin-bottom: 0px;
+       margin-top: 0px;
 }
 .footer-list {
        list-style-type:none; color: white;text-align:center;
@@ -228,6 +240,29 @@ label {
        background:#1B365D;
        position:absolute;
        width:100%;
+       padding-top: 25px;
+       padding-bottom: 25px;
+}
+#app_title {
+       float: right;
+       color: white;
+       padding-right: 10px;
+       font-size: 25px;
+}
+#uk_branding {
+       width:100%;
+       height:65px;
+       background:#1B365D;
+       text-align:center;
+       margin-left:auto;
+       margin-right:auto;
+}
+#uk_branding > a > img {
+       float: left;
+       padding-top: 5px;
+       padding-bottom: 5px;
+       padding-left: 10px;
+       width: 180px;
 }
 </style>
 </head>
@@ -235,17 +270,17 @@ label {
 <div id="content">
 <!-- header start -->
 
-<div id="uk_branding" style="width:100%;height:65px;background:#1B365D;text-align:center;margin-left:auto;margin-right:auto;padding-left: 20px;"><a href="https://libraries.uky.edu/"><img width="180px" style="float: left;padding-top: 5px;padding-bottom: 5px;" src="http://libraries.uky.edu/images/libraries-white.png"></a></div>
-<h2>UK Libraries Evaluation Form Generator</h2>
+<div id="uk_branding"><a href="https://libraries.uky.edu/"><img src="http://libraries.uky.edu/images/libraries-white.png"></a><span id="app_title">UK Libraries Evaluation Form Generator</span></div>
 
 <!-- header end -->
 
 <!-- help section start -->
 
-<p id="form_help"><label for="help" style="color:#1897d4">HELP</label>  Fill in the following form fields.  If your DOE percentage equals 100%, a 'Generate Evaluation Form' button will appear at the bottom of this page.  Click on the button and your web browser will download your generated evaluation form.</p>
+<p id="form_help"><label for="help" style="color:#1897d4">HELP</label>  Complete desired form fields before generating your form.  Clicking the button will allow your web browser to download your generated evaluation form.</p>
 
 <!-- help section end -->
-
+<div id="submit_button"><div id="form_button"><button type="button" onclick="alert('Generating the form... but not really...')">Generate Evaluation Form</button></div>
+</div>
 <!-- generator entry basic info form start -->
 <div id="generator_form">
 <div class="divTable">
@@ -303,7 +338,7 @@ label {
 <!-- distribution of effort start -->
 
 <div id="doe_form">
-
+<div id="doe_total"></div>
 <ul><h4>Section  I.   Instruction</h4>
 <li>f. Libraries - Primary Assignment</li>
 <ul>
@@ -367,7 +402,7 @@ label {
 
 
 
-<div id="doe_total"></div>
+
 
 <!-- distribution of effort end -->
 
@@ -375,8 +410,7 @@ label {
 <!-- generator entry form end -->
 
 
-<div id="submit_button">
-</div>
+
 
 
 
@@ -410,3 +444,4 @@ label {
 </div>
 </body>
 </html>
+
