@@ -2,7 +2,6 @@
 <head>
 <title>University of Kentucky Libraries Evaluation Form Generator</title>
 <script language="JavaScript">
-
 // Copyright University of Kentucky Libraries, 2020
 // Authors: Kathryn Lybarger & Eric Weig
 // License: https://creativecommons.org/licenses/by-sa/4.0/
@@ -55,15 +54,13 @@ function evalUpdate() {
     var doe_029 = document.getElementsByName("doe_profdev_leave")[0].value;
     var doe_030 = document.getElementsByName("doe_profdev_dev")[0].value;
 
-
-
     // add up all the DOE numbers
     var doe_total = +doe_001 + +doe_002 + +doe_003 + +doe_004 + +doe_005 + +doe_006 + +doe_007 + +doe_008 + +doe_009 + +doe_010 + +doe_011 + +doe_012 + +doe_013 + +doe_014 + +doe_015 + +doe_016 + +doe_017 + +doe_018 + +doe_019 + +doe_020 + +doe_021 + +doe_022 + +doe_023 + +doe_024 + +doe_025 + +doe_026 + +doe_027 + +doe_028 + +doe_029 + +doe_030;
-
 
     // display current total for DOE numbers
     document.getElementById("doe_total").innerHTML = doe_total;
 
+    // build data file for Word Document generation
     var evaldata = {
     ratings: [
         'Unsatisfactory',
@@ -231,13 +228,10 @@ function evalUpdate() {
          ]
      }
 
-
-
      if(isConsole) { 
-      // print changes to console 
+      // echo changes to console for testing 
       console.log('evaldata', evaldata);
       }
-
 
 }
 </script>
