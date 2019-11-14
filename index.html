@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>University of Kentucky Libraries Evaluation Form Generator</title>
@@ -171,7 +172,7 @@ function evalUpdate() {
                     },
                   ]
           },
-         {
+          {
                name: 'Administration',
                subcats: [
                     {
@@ -231,7 +232,7 @@ function evalUpdate() {
      if(isConsole) { 
       // echo changes to console for testing 
       console.log('evaldata', evaldata);
-      }
+     }
 
 }
 </script>
@@ -239,8 +240,8 @@ function evalUpdate() {
 <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
 <style>
 body {
-        margin: 0px;
-        font-family: 'Muli', sans-serif;
+	margin: 0px;
+	font-family: 'Muli', sans-serif;
 }
 .divTable{
 	display: table;
@@ -276,11 +277,11 @@ body {
         background: #a5acaf;
 }
 #form_button {
-display: block;
-       top: 0px;
-       right: 0px;
-       background: #1897d4;
-       padding: 22px;
+	display: block;
+	top: 0px;
+	right: 0px;
+	background: #1897d4;
+	padding: 22px;
 }
 button {
        display: block;
@@ -294,7 +295,6 @@ h2 {
 label:after {
        content: ' : ';
 }
-
 label {
        font-weight: bold;
 }
@@ -311,7 +311,6 @@ label {
 #doe_total:before {
        content: ' % total: ';
 }
-
 #form_help {
        background: #C8C8C7;
        margin-bottom: 0px;
@@ -320,7 +319,6 @@ label {
 .footer-list {
        list-style-type:none; color: white;text-align:center;
 }
-
 .footer-list-item {
        display: inline-block;
        padding-left: 5px;
@@ -371,68 +369,80 @@ label {
 
 <!-- header end -->
 
-<!-- help section start -->
 
-<p id="form_help"><label for="help" style="color:#1897d4">HELP</label>  Complete desired form fields before generating your form.  Clicking the button will allow your web browser to download your generated evaluation form.</p>
+	<!-- help section start -->
 
-<!-- help section end -->
-<div id="submit_button"><div id="form_button"><button type="button" onclick="alert('Generating the form... but not really...')">Generate Evaluation Form</button></div>
-</div>
-<!-- generator entry basic info form start -->
-<div id="generator_form">
-<div class="divTable">
-<div class="divTableBody">
-<div class="divTableRow">
-<div class="divTableCell">
-<label for="name">Name</label>
-</div><div class="divTableCell">
-<input type="text" name="personalname" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-</div>
-<div class="divTableCell">
-<label for="supervisor">Supervisor</label>
-</div><div class="divTableCell">
-<input type="text" name="supervisor" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-</div>
-</div>
-<div class="divTableRow">
-<div class="divTableCell"><label for="name">Job Title</label>
-</div><div class="divTableCell">
-<input type="text" name="jobtitle" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-</div>
-<div class="divTableCell"><label for="name">Other Evaluators</label>
-</div><div class="divTableCell">
-<input type="text" name="other_evaluators" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-</div>
-</div>
-<div class="divTableRow">
-<div class="divTableCell"><label for="name">Division / Department</label>
-</div><div class="divTableCell">
-<input type="text" name="division_department" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-</div>
-<div class="divTableCell"><label for="name">Rank</label>
-</div><div class="divTableCell">
-<input type="text" name="rank" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-</div>
-</div>
-<div class="divTableRow">
-<div class="divTableCell"><label for="name">Next Promotion / Tenure date</label>
-</div><div class="divTableCell">
-<input type="text" name="next_promo" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-</div>
-<div class="divTableCell"><label for="name">Review Year</label>
-</div><div class="divTableCell">
-<input type="text" name="review_year" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-</div>
-</div>
+	<p id="form_help"><label for="help" style="color:#1897d4">HELP</label>  Complete desired form fields before generating your form.  Clicking the button will allow your web browser to download your generated evaluation form.</p>
 
-</div>
-</div>
+	<!-- help section end -->
 
-</div>
+		<!-- form generator buttom start -->
+		
+		<div id="submit_button"><div id="form_button"><button type="button" onclick="alert('Generating the form... but not really...')">Generate Evaluation Form</button></div></div>
 
-<!-- generator entry basic info form end -->
+		<!-- form generator buttom end -->
+	
+			<!-- generator entry faculty info form start -->
+			<div id="generator_form">
+				<div class="divTable">
+					<div class="divTableBody">
+						<div class="divTableRow">
+						<div class="divTableCell">
+						<label for="name">Name</label>
+						</div>
+						<div class="divTableCell">
+						<input type="text" name="personalname" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						</div>
+						<div class="divTableCell">
+						<label for="supervisor">Supervisor</label>
+						</div>
+						<div class="divTableCell">
+						<input type="text" name="supervisor" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						</div>
+						</div>
+						<div class="divTableRow">
+						<div class="divTableCell"><label for="name">Job Title</label>
+						</div>
+						<div class="divTableCell">
+						<input type="text" name="jobtitle" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						</div>
+						<div class="divTableCell"><label for="name">Other Evaluators</label>
+						</div>
+						<div class="divTableCell">
+						<input type="text" name="other_evaluators" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						</div>
+						</div>
+						<div class="divTableRow">
+						<div class="divTableCell"><label for="name">Division / Department</label>
+						</div>
+						<div class="divTableCell">
+						<input type="text" name="division_department" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						</div>
+						<div class="divTableCell"><label for="name">Rank</label>
+						</div>
+						<div class="divTableCell">
+						<input type="text" name="rank" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						</div>
+						</div>
+						<div class="divTableRow">
+						<div class="divTableCell"><label for="name">Next Promotion / Tenure date</label>
+						</div>
+						<div class="divTableCell">
+						<input type="text" name="next_promo" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						</div>
+						<div class="divTableCell"><label for="name">Review Year</label>
+						</div>
+						<div class="divTableCell">
+						<input type="text" name="review_year" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						</div>
+						</div>
+						</div>
+						</div>
+						</div>
 
-<!-- distribution of effort start -->
+						<!-- generator entry faculty info form end -->
+
+						<!-- distribution of effort start -->
 
 <div id="doe_form">
 <div id="doe_total"></div>
@@ -493,11 +503,6 @@ label {
 <li>c. Other Development (e.g. conferences, networking) <input type="number" name="doe_profdev_dev" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 </ul>
 </p>
-
-
-
-
-
 
 
 
