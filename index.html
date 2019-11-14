@@ -317,7 +317,9 @@ label {
        margin-top: 0px;
 }
 .footer-list {
-       list-style-type:none; color: white;text-align:center;
+       list-style-type:none;
+       color: white;
+       text-align:center;
 }
 .footer-list-item {
        display: inline-block;
@@ -365,158 +367,165 @@ label {
 <div id="content">
 <!-- header start -->
 
-<div id="uk_branding"><a href="https://libraries.uky.edu/"><img src="http://libraries.uky.edu/images/libraries-white.png"></a><span id="app_title">UK Libraries Evaluation Form Generator</span></div>
+<div id="uk_branding">
+	<a href="https://libraries.uky.edu/"><img src="http://libraries.uky.edu/images/libraries-white.png"></a>
+	<span id="app_title">UK Libraries Evaluation Form Generator</span>
+</div>
 
 <!-- header end -->
 
-
 	<!-- help section start -->
 
-	<p id="form_help"><label for="help" style="color:#1897d4">HELP</label>  Complete desired form fields before generating your form.  Clicking the button will allow your web browser to download your generated evaluation form.</p>
+	<p id="form_help">
+		<label for="help" style="color:#1897d4">HELP</label>  Complete desired form fields before generating your form.  Click the button to download your generated evaluation form.
+	</p>
 
 	<!-- help section end -->
 
 		<!-- form generator buttom start -->
 		
-		<div id="submit_button"><div id="form_button"><button type="button" onclick="alert('Generating the form... but not really...')">Generate Evaluation Form</button></div></div>
+		<div id="submit_button">
+			<div id="form_button">
+				<button type="button" onclick="alert('Generating the form... but not really...')">Generate Evaluation Form</button>
+			</div>
+		</div>
 
 		<!-- form generator buttom end -->
 	
 			<!-- generator entry faculty info form start -->
+	
 			<div id="generator_form">
 				<div class="divTable">
 					<div class="divTableBody">
 						<div class="divTableRow">
-						<div class="divTableCell">
-						<label for="name">Name</label>
-						</div>
-						<div class="divTableCell">
-						<input type="text" name="personalname" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-						</div>
-						<div class="divTableCell">
-						<label for="supervisor">Supervisor</label>
-						</div>
-						<div class="divTableCell">
-						<input type="text" name="supervisor" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-						</div>
-						</div>
-						<div class="divTableRow">
-						<div class="divTableCell"><label for="name">Job Title</label>
-						</div>
-						<div class="divTableCell">
-						<input type="text" name="jobtitle" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-						</div>
-						<div class="divTableCell"><label for="name">Other Evaluators</label>
-						</div>
-						<div class="divTableCell">
-						<input type="text" name="other_evaluators" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-						</div>
+							<div class="divTableCell">
+								<label for="name">Name</label>
+							</div>
+								<div class="divTableCell">
+									<input type="text" name="personalname" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+								</div>
+							<div class="divTableCell">
+								<label for="supervisor">Supervisor</label>
+							</div>
+							<div class="divTableCell">
+								<input type="text" name="supervisor" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+							</div>
 						</div>
 						<div class="divTableRow">
-						<div class="divTableCell"><label for="name">Division / Department</label>
-						</div>
-						<div class="divTableCell">
-						<input type="text" name="division_department" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-						</div>
-						<div class="divTableCell"><label for="name">Rank</label>
-						</div>
-						<div class="divTableCell">
-						<input type="text" name="rank" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-						</div>
+							<div class="divTableCell">
+								<label for="name">Job Title</label>
+							</div>
+							<div class="divTableCell">
+								<input type="text" name="jobtitle" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+							</div>
+							<div class="divTableCell">
+								<label for="name">Other Evaluators</label>
+							</div>
+							<div class="divTableCell">
+								<input type="text" name="other_evaluators" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+							</div>
 						</div>
 						<div class="divTableRow">
-						<div class="divTableCell"><label for="name">Next Promotion / Tenure date</label>
+							<div class="divTableCell">
+								<label for="name">Division / Department</label>
+							</div>
+							<div class="divTableCell">
+								<input type="text" name="division_department" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+							</div>
+							<div class="divTableCell">
+								<label for="name">Rank</label>
+							</div>
+							<div class="divTableCell">
+								<input type="text" name="rank" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+							</div>
 						</div>
-						<div class="divTableCell">
-						<input type="text" name="next_promo" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+						<div class="divTableRow">
+							<div class="divTableCell">
+								<label for="name">Next Promotion / Tenure date</label>
+							</div>
+							<div class="divTableCell">
+								<input type="text" name="next_promo" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+							</div>
+							<div class="divTableCell">
+								<label for="name">Review Year</label>
+							</div>
+							<div class="divTableCell">
+								<input type="text" name="review_year" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
+							</div>
 						</div>
-						<div class="divTableCell"><label for="name">Review Year</label>
-						</div>
-						<div class="divTableCell">
-						<input type="text" name="review_year" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-						</div>
-						</div>
-						</div>
-						</div>
-						</div>
+					</div>
+				</div>
+			</div>
 
-						<!-- generator entry faculty info form end -->
+			<!-- generator entry faculty info form end -->
 
-						<!-- distribution of effort start -->
+			<!-- distribution of effort start -->
 
-<div id="doe_form">
-<div id="doe_total"></div>
-<ul><h4>Section  I.   Instruction</h4>
-<li>f. Libraries - Primary Assignment</li>
-<ul>
-<li>Reference/Information Service <input type="number" name="doe_inst_ref_serve" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Library Instruction <input type="number" name="doe_inst_lib_inst" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Technical Services <input type="number" name="doe_inst_tech_serve" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Information Technology <input type="number" name="doe_inst_info_tech" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Collection Management <input type="number" name="doe_inst_coll_mangr" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Administration (report in Sect IV)</li>
-<li>Other Primary Activities <input type="number" name="doe_inst_other_primary" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-</ul>
-</ul>
-<ul><h4>Section  II.  Research</h4>
-<li>a. Internally funded research <input type="number" name="doe_res_int_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>b. Externally funded research <input type="number" name="doe_res_ext_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>c. Gifts <input type="number" name="doe_res_gifts" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>d. Non-funded research (general research efforts) <input type="number" name="doe_res_no_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-</ul>
-<ul><h4>Section  III. Service</h4>
-<li>a. Service to Public <input type="number" name="doe_serv_pub" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li> 
-<li>b. Service to Professions <input type="number" name="doe_serv_prof" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>c. Service to Institution</li>
-<ul>
-<li>College and Department <input type="number" name="doe_serv_coll_dept" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>University Level <input type="number" name="doe_serv_univ" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-</ul>
-<li>d. Patient Care Unrelated to Instruction</li>
-<ul>
-<li>Direct Patient Care and Clinical Service <input type="number" name="doe_serv_patient" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Quality Assurance Activities <input type="number" name="doe_serv_qaa" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Other Clinical Services <input type="number" name="doe_serv_clinic_serv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Clinical Contract Work or Other Cash Income <input type="number" name="doe_serv_clinic_contract" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Hospital Physician Service for all Patients <input type="number" name="doe_serv_hosp" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-</ul>
-</ul>
-<ul><h4>Section  IV. Administration</h4>
-<li>a. College and Department</li>
-<ul>
- <li>Chair Vice Chair/equivalent Academic Division Director/Chief Other position (e.g., DGS, DUS) <input type="number" name="doe_admin_chair" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
- <li>Other administrative activities <input type="number" name="doe_admin_other_1" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-</ul>
-<li>b. University Level <input type="number" name="doe_admin_univ_lv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>c. UK Health Care Enterprise</li>
-<ul>
-<li>Clinical Division Director/Chief <input type="number" name="doe_admin_cdd" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Medical Director <input type="number" name="doe_admin_md" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Other Position <input type="number" name="doe_admin_other_pos" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>Other administrative activities <input type="number" name="doe_admin_other_2" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-</ul>
-<li>d. Fund Raising (Private Gift Solicitation) <input type="number" name="doe_admin_gift" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-</ul>
-<ul><h4>Section  V.  Professional Development</h4>
-<li>a. Sabbatical Leave <input type="number" name="doe_profdev_sabb" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>b. Other Approved Leave (e.g. TDL, educational, scholarly) <input type="number" name="doe_profdev_leave" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-<li>c. Other Development (e.g. conferences, networking) <input type="number" name="doe_profdev_dev" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-</ul>
-</p>
+			<div id="doe_form">
+				<div id="doe_total"></div>
+				<ul><h4>Section  I.   Instruction</h4>
+					<li>f. Libraries - Primary Assignment</li>
+						<ul>
+							<li>Reference/Information Service <input type="number" name="doe_inst_ref_serve" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Library Instruction <input type="number" name="doe_inst_lib_inst" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Technical Services <input type="number" name="doe_inst_tech_serve" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Information Technology <input type="number" name="doe_inst_info_tech" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Collection Management <input type="number" name="doe_inst_coll_mangr" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Administration (report in Sect IV)</li>
+							<li>Other Primary Activities <input type="number" name="doe_inst_other_primary" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+						</ul>
+				</ul>
+				<ul><h4>Section  II.  Research</h4>
+					<li>a. Internally funded research <input type="number" name="doe_res_int_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+					<li>b. Externally funded research <input type="number" name="doe_res_ext_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+					<li>c. Gifts <input type="number" name="doe_res_gifts" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+					<li>d. Non-funded research (general research efforts) <input type="number" name="doe_res_no_fund" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+				</ul>
+				<ul><h4>Section  III. Service</h4>
+					<li>a. Service to Public <input type="number" name="doe_serv_pub" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li> 
+					<li>b. Service to Professions <input type="number" name="doe_serv_prof" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+					<li>c. Service to Institution</li>
+						<ul>
+							<li>College and Department <input type="number" name="doe_serv_coll_dept" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>University Level <input type="number" name="doe_serv_univ" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+						</ul>
+					<li>d. Patient Care Unrelated to Instruction</li>
+						<ul>
+							<li>Direct Patient Care and Clinical Service <input type="number" name="doe_serv_patient" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Quality Assurance Activities <input type="number" name="doe_serv_qaa" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Other Clinical Services <input type="number" name="doe_serv_clinic_serv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Clinical Contract Work or Other Cash Income <input type="number" name="doe_serv_clinic_contract" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Hospital Physician Service for all Patients <input type="number" name="doe_serv_hosp" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+						</ul>
+				</ul>
+				<ul><h4>Section  IV. Administration</h4>
+					<li>a. College and Department</li>
+						<ul>
+ 							<li>Chair Vice Chair/equivalent Academic Division Director/Chief Other position (e.g., DGS, DUS) <input type="number" name="doe_admin_chair" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Other administrative activities <input type="number" name="doe_admin_other_1" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+						</ul>
+					<li>b. University Level <input type="number" name="doe_admin_univ_lv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+					<li>c. UK Health Care Enterprise</li>
+						<ul>
+							<li>Clinical Division Director/Chief <input type="number" name="doe_admin_cdd" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Medical Director <input type="number" name="doe_admin_md" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Other Position <input type="number" name="doe_admin_other_pos" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+							<li>Other administrative activities <input type="number" name="doe_admin_other_2" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+						</ul>
+					<li>d. Fund Raising (Private Gift Solicitation) <input type="number" name="doe_admin_gift" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+				</ul>
+				<ul><h4>Section  V.  Professional Development</h4>
+					<li>a. Sabbatical Leave <input type="number" name="doe_profdev_sabb" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+					<li>b. Other Approved Leave (e.g. TDL, educational, scholarly) <input type="number" name="doe_profdev_leave" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+					<li>c. Other Development (e.g. conferences, networking) <input type="number" name="doe_profdev_dev" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+				</ul>
+			</div>
 
+			<!-- distribution of effort end -->
 
+	<!-- generator entry form end -->
 
-<!-- distribution of effort end -->
-
-</div>
-<!-- generator entry form end -->
-
-
-
-
-
-
-<!-- add footer -->
+<!-- footer -->
 
     <div id="footer">
         <div>
@@ -540,8 +549,6 @@ label {
             </div>
         </div>
     </div>
-
-
 
 </div>
 </body>
