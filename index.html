@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="utf-8"/>
 <title>University of Kentucky Libraries Evaluation Form Generator</title>
 <script>
 // Copyright University of Kentucky Libraries, 2020
 // Authors: Kathryn Lybarger & Eric Weig
 // License: https://creativecommons.org/licenses/by-sa/4.0/
+
+var evaldata;
 
 function evalUpdate() {
 
@@ -62,7 +65,7 @@ function evalUpdate() {
     document.getElementById("doe_total").innerHTML = doe_total;
 
     // build data file for Word Document generation
-    var evaldata = {
+    evaldata = {
     ratings: [
         'Unsatisfactory',
         'Improvement Expected',
@@ -406,7 +409,7 @@ label {
 		
 		<div id="submit_button">
 			<div id="form_button">
-				<button type="button" onclick="alert('Generating the form... but not really...')">Generate Evaluation Form</button>
+				<button type="button" id="generate">Generate Evaluation Form</button>
 			</div>
 		</div>
 
@@ -577,5 +580,44 @@ label {
     </div>
 
 </div>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.js" integrity="sha256-bBikss7mndcF6KmskR4ihPSlxoyGAxuG4Gf/rzolOTg=" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js" integrity="sha256-u/J1Urdrk3nCYFefpoeTMgI5viU1ujCDu2fXXoSJjhg=" crossorigin="anonymous"></script>
+<script>
+
+document.getElementById("generate").addEventListener("click",function() {
+  const zip = new JSZip();
+  fetch( "fppa.docx" )
+    .then( response => response.blob() )
+    .then( blob => zip.loadAsync(blob) )
+    .then( () => zip.folder("word").file("document.xml").async("string") )
+    .then( document_xml_content => transmogrify( document_xml_content, evaldata ) )
+    .then( new_document_xml_content => zip.folder("word").file("document.xml", new_document_xml_content ) )
+    .then( () => zip.generateAsync({type:"blob"}) )
+    .then( blob => saveAs( blob, "fppa.docx" ) )
+});
+
+function transmogrify( string_content, evaldata ) {
+
+  // generate tree
+  var fppatree = '';
+
+  // generate blocks
+  var fppablocks = '';
+
+  return string_content
+	.replace(/FPPA_NAME/,evaldata.person.name)
+	.replace(/FPPA_SUPE/,evaldata.person.supervisor)
+	.replace(/FPPA_JOB/,evaldata.person.job_title)
+	.replace(/FPPA_OTHER/,evaldata.person.other_evaluators)
+	.replace(/FPPA_DIVDEPT/,evaldata.person.division)
+	.replace(/FPPA_RANK/,evaldata.person.rank)
+	.replace(/FPPA_PTDATE/,evaldata.person.next_pt_date)
+	.replace(/FPPA_REVYEAR/,evaldata.person.review_year)
+	.replace(/FPPA_TREE/,fppatree)
+	.replace(/FPPA_BLOCKS/,fppablocks)
+
+}
+
+</script>
 </body>
 </html>
