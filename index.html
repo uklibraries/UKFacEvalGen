@@ -615,29 +615,184 @@ function fppaTreeEntry( name, indent, percent ) {
         <w:t>${name}${percent>0?" (" + percent + "%)":""}</w:t>
       </w:r>
     </w:p>
-  `)
+`);
+}
+
+function fppaBlocksGrayBar( text ) {
+	return (`
+	<w:p>
+      <w:pPr>
+        <w:keepNext/>
+        <w:keepLines/>
+		<w:pBdr>
+          <w:top w:val="nil"/>
+          <w:left w:val="nil"/>
+          <w:bottom w:val="nil"/>
+          <w:right w:val="nil"/>
+          <w:between w:val="nil"/>
+        </w:pBdr>
+        <w:shd w:val="clear" w:color="auto" w:fill="D9D9D9"/>
+        <w:spacing w:before="40" w:line="360" w:lineRule="auto"/>
+        <w:jc w:val="center"/>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>
+          <w:b/>
+          <w:color w:val="000000"/>
+          <w:sz w:val="24"/>
+		  <w:szCs w:val="24"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:rFonts w:ascii="Calibri" w:eastAsia="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>
+          <w:b/>
+          <w:color w:val="000000"/>
+          <w:sz w:val="24"/>
+          <w:szCs w:val="24"/>
+        </w:rPr>
+        <w:t>${text}</w:t>
+      </w:r>
+    </w:p>
+`);
+}
+
+function fppaBlocksHeading( text ) {
+	return (`
+    <w:p>
+      <w:r>
+        <w:rPr>
+          <w:b/>
+        </w:rPr>
+        <w:t>${text}</w:t>
+      </w:r>
+    </w:p>
+`);
+}
+
+function fppaBlocksBlankLineForSelf() {
+	return (`
+	<w:p>
+	  <w:r>
+        <w:rPr>
+          <w:color w:val="0000FF"/>
+        </w:rPr>
+		<w:t xml:space="preserve"> </w:t>
+      </w:r>
+    </w:p>
+`);
+}
+
+function fppaBlocksBlankLineForSupervisor() {
+	return (`
+	<w:p>
+	  <w:r>
+        <w:rPr>
+          <w:color w:val="880088"/>
+        </w:rPr>
+		<w:t xml:space="preserve"> </w:t>
+      </w:r>
+    </w:p>
+`);
+}
+
+function fppaBlocksTableCell(text,width,color="0000FF",first=false,last=false) {
+//          <w:tcPr>
+//            <w:tcW w:w="${width}" w:type="dxa"/>
+//          </w:tcPr>
+  return (`
+        <w:tc>
+		  <w:tcPr>
+            <w:tcMar>
+              ${first?"":'<w:start w:w="250" w:type="dxa"/>'}
+              <w:end w:w="40" w:type="dxa"/>
+            </w:tcMar>
+			<w:vAlign w:val="bottom"/>
+		  </w:tcPr>
+          <w:p>
+            <w:r>
+              <w:rPr>
+                <w:sz w:val="28"/>
+                <w:u w:val="thick"/>
+                <w:color w:val="${color}"/>
+              </w:rPr>
+              <w:t>&#xa0;&#xa0;&#xa0;</w:t>
+            </w:r>
+		  </w:p>
+        </w:tc>
+        <w:tc>
+		  <w:tcPr>
+            <w:tcMar>
+              <w:start w:w="40" w:type="dxa"/>
+              ${last?"":'<w:end w:w="250" w:type="dxa"/>'}
+            </w:tcMar>
+			<w:vAlign w:val="bottom"/>
+		  </w:tcPr>
+          <w:p>
+            <w:r>
+              <w:rPr>
+                <w:sz w:val="18"/>
+              </w:rPr>
+              <w:t xml:space="preserve">${text}</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+`);
+}
+
+function fppaBlocksTable( levels, widths, color="0000FF" ) {
+	return (`
+    <w:tbl>
+      <w:tblPr>
+        <w:tblStyle w:val="a2"/>
+        <w:tblW w:w="0" w:type="auto"/>
+        <w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/>
+      </w:tblPr>
+      <w:tblGrid>${widths.map( w => `<w:gridCol w:w="${w}"/>`).join("") }</w:tblGrid>
+      <w:tr>${levels.map( (lvl,i) => fppaBlocksTableCell( lvl, widths[i], color, i==0, i==levels.length-1 ) ).join("") }</w:tr>
+    </w:tbl>
+`);
 }
 
 function transmogrify( string_content, evaldata ) {
+  const widths = [ 2085, 1995, 1815, 1350, 2115 ];
 
-  // generate tree
   var fppatree = []
+  var fppablocks = [];
   fppatree.push("</w:t></w:r></w:p>");
+  fppablocks.push("</w:t></w:r></w:p>");
   for (const cat of evaldata.DOE) {
     if (cat.subcats.some(subcat=>subcat.percent)) {
       fppatree.push(fppaTreeEntry( cat.name, 0, 0 ));
       for (const subcat of cat.subcats) {
         if (subcat.percent) {
           fppatree.push(fppaTreeEntry( subcat.name, 1, subcat.percent ));
+          fppablocks.push( fppaBlocksGrayBar( `${subcat.name} (${subcat.percent}%)` ) );
+		  fppablocks.push( "<w:p/>" );
+          fppablocks.push( fppaBlocksHeading( "Self Rating:" ) );
+		  fppablocks.push( "<w:p/>" );
+          fppablocks.push( fppaBlocksTable( evaldata.ratings, widths, "0000FF" ) );
+		  fppablocks.push( "<w:p/>" );
+          fppablocks.push( fppaBlocksHeading( "Description of activities and achievements / justification of rating:" ) );
+		  fppablocks.push( fppaBlocksBlankLineForSelf() );
+		  fppablocks.push( fppaBlocksBlankLineForSelf() );
+          fppablocks.push( fppaBlocksHeading( "Supervisor Rating:" ) );
+		  fppablocks.push( "<w:p/>" );
+          fppablocks.push( fppaBlocksTable( evaldata.ratings, widths, "880088" ) );
+		  fppablocks.push( "<w:p/>" );
+          fppablocks.push( fppaBlocksHeading( "Supervisor comments and justification of rating:" ) );
+		  fppablocks.push( fppaBlocksBlankLineForSupervisor() );
+		  fppablocks.push( fppaBlocksBlankLineForSupervisor() );
+          fppablocks.push( fppaBlocksHeading( "Recommended action (if required):" ) );
+		  fppablocks.push( fppaBlocksBlankLineForSupervisor() );
+		  fppablocks.push( fppaBlocksBlankLineForSupervisor() );
         }
       }
     }
   }
   fppatree.push("<w:p><w:r><w:t>");
+  fppablocks.push("<w:p><w:r><w:t>");
   fppatree = fppatree.join("");
-
-  // generate blocks
-  var fppablocks = '';
+  fppablocks = fppablocks.join("");
 
   return string_content
 	.replace(/FPPA_NAME/,evaldata.person.name)
