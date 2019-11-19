@@ -592,7 +592,7 @@ document.getElementById("generate").addEventListener("click",function() {
     .then( () => zip.folder("word").file("document.xml").async("string") )
     .then( document_xml_content => transmogrify( document_xml_content, evaldata ) )
     .then( new_document_xml_content => zip.folder("word").file("document.xml", new_document_xml_content ) )
-    .then( () => zip.generateAsync({type:"blob"}) )
+    .then( () => zip.generateAsync({type:"blob",mimeType:"application/vnd.openxmlformats-officedocument.wordprocessingml.document",compression:"DEFLATE"}) )
     .then( blob => saveAs( blob, "fppa.docx" ) )
 });
 
