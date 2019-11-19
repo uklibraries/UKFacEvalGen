@@ -596,10 +596,45 @@ document.getElementById("generate").addEventListener("click",function() {
     .then( blob => saveAs( blob, "fppa.docx" ) )
 });
 
+function fppaTreeEntry( name, indent, percent ) {
+  return (`
+    <w:p>
+      <w:pPr>
+        <w:numPr>
+          <w:ilvl w:val="${indent}"/>
+          <w:numId w:val="6"/>
+        </w:numPr>
+        <w:rPr>
+          <w:color w:val="0000FF"/>
+        </w:rPr>
+      </w:pPr>
+      <w:r>
+        <w:rPr>
+          <w:color w:val="0000FF"/>
+        </w:rPr>
+        <w:t>${name}${percent>0?" (" + percent + "%)":""}</w:t>
+      </w:r>
+    </w:p>
+  `)
+}
+
 function transmogrify( string_content, evaldata ) {
 
   // generate tree
-  var fppatree = '';
+  var fppatree = []
+  fppatree.push("</w:t></w:r></w:p>");
+  for (const cat of evaldata.DOE) {
+    if (cat.subcats.some(subcat=>subcat.percent)) {
+      fppatree.push(fppaTreeEntry( cat.name, 0, 0 ));
+      for (const subcat of cat.subcats) {
+        if (subcat.percent) {
+          fppatree.push(fppaTreeEntry( subcat.name, 1, subcat.percent ));
+        }
+      }
+    }
+  }
+  fppatree.push("<w:p><w:r><w:t>");
+  fppatree = fppatree.join("");
 
   // generate blocks
   var fppablocks = '';
