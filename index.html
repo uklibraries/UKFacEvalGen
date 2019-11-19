@@ -696,17 +696,16 @@ function fppaBlocksBlankLineForSupervisor() {
 }
 
 function fppaBlocksTableCell(text,width,color="0000FF",first=false,last=false) {
-//          <w:tcPr>
-//            <w:tcW w:w="${width}" w:type="dxa"/>
-//          </w:tcPr>
+
   return (`
         <w:tc>
 		  <w:tcPr>
-            <w:tcMar>
-              ${first?"":'<w:start w:w="250" w:type="dxa"/>'}
-              <w:end w:w="40" w:type="dxa"/>
-            </w:tcMar>
 			<w:vAlign w:val="bottom"/>
+            <w:tcW w:w="450" w:type="dxa"/>
+            <w:tcMar>
+              ${first?"":'<w:start w:w="0" w:type="dxa"/>'}
+              <w:end w:w="0" w:type="dxa"/>
+            </w:tcMar>
 		  </w:tcPr>
           <w:p>
             <w:r>
@@ -721,11 +720,12 @@ function fppaBlocksTableCell(text,width,color="0000FF",first=false,last=false) {
         </w:tc>
         <w:tc>
 		  <w:tcPr>
-            <w:tcMar>
-              <w:start w:w="40" w:type="dxa"/>
-              ${last?"":'<w:end w:w="250" w:type="dxa"/>'}
-            </w:tcMar>
 			<w:vAlign w:val="bottom"/>
+            <w:tcW w:w="${width}" w:type="dxa"/>
+            <w:tcMar>
+              <w:start w:w="0" w:type="dxa"/>
+              ${last?"":'<w:end w:w="0" w:type="dxa"/>'}
+            </w:tcMar>
 		  </w:tcPr>
           <w:p>
             <w:r>
@@ -747,14 +747,14 @@ function fppaBlocksTable( levels, widths, color="0000FF" ) {
         <w:tblW w:w="0" w:type="auto"/>
         <w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/>
       </w:tblPr>
-      <w:tblGrid>${widths.map( w => `<w:gridCol w:w="${w}"/>`).join("") }</w:tblGrid>
+      <w:tblGrid>${widths.map( w => `<w:gridCol w:w="450"/><w:gridCol w:w="${w}"/>`).join("") }</w:tblGrid>
       <w:tr>${levels.map( (lvl,i) => fppaBlocksTableCell( lvl, widths[i], color, i==0, i==levels.length-1 ) ).join("") }</w:tr>
     </w:tbl>
 `);
 }
 
 function transmogrify( string_content, evaldata ) {
-  const widths = [ 2085, 1995, 1815, 1350, 2115 ];
+  const widths = [ 1800, 1800, 1800, 1500, 1800 ];
 
   var fppatree = []
   var fppablocks = [];
