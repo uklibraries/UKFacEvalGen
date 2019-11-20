@@ -7,25 +7,21 @@
 // Copyright University of Kentucky Libraries, 2020
 // Authors: Kathryn Lybarger & Eric Weig
 // License: https://creativecommons.org/licenses/by-sa/4.0/
-
 var evaldata;
-
 function evalUpdate() {
-
     // set flag for console output
     // set to 1 in order to view output in console
     var isConsole = 1;
-
     // set variables for faculty info
     var personalName = document.getElementsByName("personalname")[0].value;
     var superVisor = document.getElementsByName("supervisor")[0].value;
     var jobTitle = document.getElementsByName("jobtitle")[0].value;
-    var divDpt = document.getElementsByName("division_department")[0].value;
+    var division = document.getElementsByName("division")[0].value;
+    var department = document.getElementsByName("department")[0].value;
     var otherEvals = document.getElementsByName("other_evaluators")[0].value;
     var rank = document.getElementsByName("rank")[0].value;
     var revYear = document.getElementsByName("review_year")[0].value;
     var nxtPromo = document.getElementsByName("next_promo")[0].value;
-
     // set variables for faculty DOE
     var doe_001 = document.getElementsByName("doe_inst_ref_serve")[0].value;
     var doe_002 = document.getElementsByName("doe_inst_lib_inst")[0].value;
@@ -57,13 +53,10 @@ function evalUpdate() {
     var doe_028 = document.getElementsByName("doe_profdev_sabb")[0].value;
     var doe_029 = document.getElementsByName("doe_profdev_leave")[0].value;
     var doe_030 = document.getElementsByName("doe_profdev_dev")[0].value;
-
     // add up all the DOE numbers
     var doe_total = +doe_001 + +doe_002 + +doe_003 + +doe_004 + +doe_005 + +doe_006 + +doe_007 + +doe_008 + +doe_009 + +doe_010 + +doe_011 + +doe_012 + +doe_013 + +doe_014 + +doe_015 + +doe_016 + +doe_017 + +doe_018 + +doe_019 + +doe_020 + +doe_021 + +doe_022 + +doe_023 + +doe_024 + +doe_025 + +doe_026 + +doe_027 + +doe_028 + +doe_029 + +doe_030;
-
     // display current total for DOE numbers
     document.getElementById("doe_total").innerHTML = doe_total;
-
     // build data file for Word Document generation
     evaldata = {
     ratings: [
@@ -76,7 +69,8 @@ function evalUpdate() {
     person: {
         name: personalName,
         job_title: jobTitle,
-        division: divDpt,
+        division: division,
+        department: department,
         supervisor: superVisor,
         other_evaluators: otherEvals,
         rank: rank,
@@ -231,12 +225,10 @@ function evalUpdate() {
           },
          ]
      }
-
      if(isConsole) { 
       // echo changes to console for testing 
       console.log('evaldata', evaldata);
      }
-
 }
 </script>
 
@@ -247,49 +239,30 @@ body {
 	font-family: 'Muli', sans-serif;
 	font-size: 16px;
 }
-.divTable{
-	display: table;
-	width: 100%;
+select {
+        width: 100%;
 }
-.divTableRow {
-	display: table-row;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-}
-.divTableCell, .divTableHead {
-	border: 0px solid #999999;
-	display: table-cell;
-	padding: 3px 10px;
-}
-.divTableHeading {
-	background-color: #EEE;
-	display: table-header-group;
-	font-weight: bold;
-}
-.divTableFoot {
-	background-color: #EEE;
-	display: table-footer-group;
-	font-weight: bold;
-}
-.divTableBody {
-	display: table-row-group;
+input[type|="text"] {
+        width: 100%;
 }
 #generator_form, #form_help {
-        padding: 25px;
+        padding: 25px 25px 25px 10px;
         background: #a5acaf;
 }
 #submit_button {
         position: sticky;
         top: 0;	
+        background: aliceblue;
+        height: 94px;
+        border-bottom: 1px solid #1B365D;
 }
 #form_button {
-	display: block;
+	float: left;
 	top: 0px;
 	right: 0px;
 	background: #1897d4;
 	padding: 22px;
+	width: 85%;
 }
 button {
        display: block;
@@ -318,7 +291,7 @@ label {
 #generator_form {
        padding-bottom: 10px;
        border-bottom: 1px solid #1B365D;
-       background: #a5acaf;
+       background: #fff;
 }
 #doe_form {
 	padding: 25px;
@@ -334,6 +307,7 @@ label {
 #doe_total:before {
        content: ' % total: ';
 }
+
 #form_help {
        background: #C8C8C7;
        margin-bottom: 0px;
@@ -387,6 +361,59 @@ label {
        padding-left: 10px;
        width: 180px;
 }
+.faculty-information {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+       grid-gap: 1rem;
+       max-width: 80%;
+       width: 100%;
+       margin-left: auto;
+       margin-right: auto;
+}
+dl, ol, p, table, ul {
+       margin-bottom: 2em;
+}
+ol, ul {
+       list-style: none;
+}
+.empty > .tooltip {
+       border-bottom: 0px dotted black;
+}
+.tooltip {
+       display: inline-block;
+       background: white;
+       border: 0px;
+       height: 25px;
+       width: 100px;
+}
+.heading {
+       margin-left: 40%;
+}
+.tooltip {
+       position: static;
+       display: inline-block;
+       border-bottom: 1px dotted black;
+       width: 200px;
+}
+.tooltip .tooltiptext {
+       visibility: hidden;
+       width: 120px;
+       background-color: black;
+       color: #fff;
+       text-align: center;
+       border-radius: 6px;
+       padding: 5px 0;
+
+       /* Position the tooltip */
+       position: absolute;
+       z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+       visibility: visible;
+}
+.hide {
+      display: none;
+}
 </style>
 </head>
 <body>
@@ -413,82 +440,114 @@ label {
 		<div id="submit_button">
 			<div id="form_button">
 				<button type="button" id="generate">Generate Evaluation Form</button>
-			</div>
+			</div><div id="doe_total"></div>
 		</div>
 
 		<!-- form generator buttom end -->
 	
+
+
 			<!-- generator entry faculty info form start -->
-	
-			<div id="generator_form">
-				<div class="divTable">
-					<div class="divTableBody">
-						<div class="divTableRow">
-							<div class="divTableCell">
-								<label>Name</label>
-							</div>
-								<div class="divTableCell">
-									<input type="text" name="personalname" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-								</div>
-							<div class="divTableCell">
-								<label>Supervisor</label>
-							</div>
-							<div class="divTableCell">
-								<input type="text" name="supervisor" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-							</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">
-								<label>Job Title</label>
-							</div>
-							<div class="divTableCell">
-								<input type="text" name="jobtitle" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-							</div>
-							<div class="divTableCell">
-								<label>Other Evaluators</label>
-							</div>
-							<div class="divTableCell">
-								<input type="text" name="other_evaluators" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-							</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">
-								<label>Division / Department</label>
-							</div>
-							<div class="divTableCell">
-								<input type="text" name="division_department" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-							</div>
-							<div class="divTableCell">
-								<label>Rank</label>
-							</div>
-							<div class="divTableCell">
-								<input type="text" name="rank" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-							</div>
-						</div>
-						<div class="divTableRow">
-							<div class="divTableCell">
-								<label>Next Promotion / Tenure date</label>
-							</div>
-							<div class="divTableCell">
-								<input type="text" name="next_promo" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-							</div>
-							<div class="divTableCell">
-								<label>Review Year</label>
-							</div>
-							<div class="divTableCell">
-								<input type="text" name="review_year" onkeyup="evalUpdate()" onchange="evalUpdate()"/>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+	<div id="generator_form">
+		<ul class="faculty-information">
+
+			<!-- name -->
+
+			<li class="heading" id="faculty-info-0"><label><div class="tooltip">Name<span class="tooltiptext">Enter your full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-1"><input type="text" name="personalname" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+
+			<!-- supervisor -->
+
+			<li class="heading" id="faculty-info-2"><label><div class="tooltip">Review Year<span class="tooltiptext">Enter your supervisor's full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-3"><input type="text" name="review_year" maxlength="4" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li></li>
+
+		</ul>
+
+
+		<ul class="faculty-information">
+
+			<!-- job title -->
+
+			<li class="heading" id="faculty-info-4"><label><div class="tooltip">Supervisor<span class="tooltiptext">Enter your full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-5"><input type="text" name="supervisor" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+
+			<!-- other evaluators -->
+
+			<li class="heading" id="faculty-info-6"><label><div class="tooltip">Other Evaluators<span class="tooltiptext">Enter your supervisor's full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-7"><input type="text" name="other_evaluators" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li></li>
+
+		</ul>
+
+
+		<ul class="faculty-information">
+
+			<!-- division/department -->
+
+			<li class="heading" id="faculty-info-8"><label><div class="tooltip">Job Title<span class="tooltiptext">Enter your full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-9"><input type="text" name="jobtitle" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+
+			<!-- rank -->
+
+			<li class="heading" id="faculty-info-10"><label><div class="tooltip">Rank<span class="tooltiptext">Enter your supervisor's full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-11">
+				<select name="rank" onkeyup="evalUpdate()" onchange="evalUpdate()">
+				  <option value="">select rank</option>
+				  <option value="Librarian IV">Librarian IV</option>
+				  <option value="Librarian III">Librarian III</option>
+				  <option value="Librarian II">Librarian II</option>
+				  <option value="Librarian I">Librarian I</option>
+				</select>
+
+		</ul>
+
+		<ul class="faculty-information">
+
+			<!-- next promotion/tenure date -->
+
+			<li class="heading" id="faculty-info-12"><label><div class="tooltip">Division<span class="tooltiptext">Enter your full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-13"><input type="text" name="division" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+
+			<!-- review year -->
+
+			<li class="heading" id="faculty-info-14"><label><div class="tooltip">Next Promotion Year<span class="tooltiptext">Enter your supervisor's full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-15"><input type="text" name="next_promo" maxlength="4" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li></li>
+
+		</ul>
+
+		<ul class="faculty-information">
+
+			<!-- next promotion/tenure date -->
+
+			<li class="heading" id="faculty-info-16"><label><div class="tooltip">Department<span class="tooltiptext">Enter your full name, i.e. 'Joan Smith'</span></div></label></li>
+
+			<li id="faculty-info-17"><input type="text" name="department" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+
+			<!-- review year -->
+
+			<li id="faculty-info-18" class="empty"><div class="tooltip"></div></li>
+
+			<li id="faculty-info-19"></li></li>
+
+		</ul>
+
+	</div>
+
+
 
 			<!-- generator entry faculty info form end -->
 
 			<!-- distribution of effort start -->
 
 			<div id="doe_form">
-				<div id="doe_total"></div>
+				
 				<h4>Section  I.   Instruction</h4>
 				<ul>
 					<li>f. Libraries - Primary Assignment</li>
@@ -519,14 +578,14 @@ label {
 							<li>College and Department <input type="number" name="doe_serv_coll_dept" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>University Level <input type="number" name="doe_serv_univ" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							</ul></li>
-					<li>d. Patient Care Unrelated to Instruction</li>
+					<div class="hide"><li>d. Patient Care Unrelated to Instruction</li>
 						<li><ul>
 							<li>Direct Patient Care and Clinical Service <input type="number" name="doe_serv_patient" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Quality Assurance Activities <input type="number" name="doe_serv_qaa" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Other Clinical Services <input type="number" name="doe_serv_clinic_serv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Clinical Contract Work or Other Cash Income <input type="number" name="doe_serv_clinic_contract" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Hospital Physician Service for all Patients <input type="number" name="doe_serv_hosp" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-							</ul></li>
+							</ul></li></div>
 				</ul>
 				<h4>Section  IV. Administration</h4>
 				<ul>
@@ -536,13 +595,13 @@ label {
 							<li>Other administrative activities <input type="number" name="doe_admin_other_1" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							</ul></li>
 					<li>b. University Level <input type="number" name="doe_admin_univ_lv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-					<li>c. UK Health Care Enterprise</li>
+					<div class="hide"><li>c. UK Health Care Enterprise</li>
 						<li><ul>
 							<li>Clinical Division Director/Chief <input type="number" name="doe_admin_cdd" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Medical Director <input type="number" name="doe_admin_md" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Other Position <input type="number" name="doe_admin_other_pos" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Other administrative activities <input type="number" name="doe_admin_other_2" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-							</ul></li>
+							</ul></li></div>
 					<li>d. Fund Raising (Private Gift Solicitation) <input type="number" name="doe_admin_gift" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 				</ul>
 				<h4>Section  V.  Professional Development</h4>
