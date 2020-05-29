@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name=viewport content="width=600">
+<meta name=description content="University of Kentucky Libraries Faculty Evaluation Form Generator.">
 <title>University of Kentucky Libraries Evaluation Form Generator</title>
 <script>
 // Copyright University of Kentucky Libraries, 2020
@@ -12,7 +13,7 @@ var evaldata;
 function evalUpdate() {
     // set flag for console output
     // set to 1 in order to view output in console
-    var isConsole = 1;
+    var isConsole = 0;
     // set variables for faculty info
     var personalName = document.getElementsByName("personalname")[0].value;
     var superVisor = document.getElementsByName("supervisor")[0].value;
@@ -61,11 +62,14 @@ function evalUpdate() {
     // build data file for Word Document generation
     evaldata = {
     ratings: [
-        'Unsatisfactory',
-        'Improvement Expected',
-        'Provisional',
-        'Solid',
-        'Distinguished'
+        'Needs Improvement',
+        'Meets Expectations',
+        'Exceeds Expectations'
+    ],
+    rare_ratings: [
+        'Rare ratings:',
+        'Transitional',
+        'Special Recognition'
     ],
     person: {
         name: personalName,
@@ -472,7 +476,7 @@ select {
 <!-- header start -->
 
 <div id="uk_branding">
-	<a href="https://libraries.uky.edu/"><img src="https://libraries.uky.edu/images/libraries-white.png" alt="University of Kentucky Libraries"></a>
+	<a href="https://libraries.uky.edu/"><img src="images/libraries-white.png" alt="University of Kentucky Libraries"></a>
 	<span id="app_title">UK Libraries Evaluation Form Generator</span>
 </div>
 
@@ -504,15 +508,15 @@ select {
 
 			<!-- name -->
 
-			<li class="heading" id="faculty-info-0"><label><div class="tooltip">Name<span class="tooltiptext">Enter your full name, i.e. 'Jane Doe'</span></div></label></li>
+			<li class="heading" id="faculty-info-0"><label for="personalname"><div class="tooltip">Name<span class="tooltiptext">Enter your full name, i.e. 'Jane Doe'</span></div></label></li>
 
-			<li id="faculty-info-1"><input type="text" name="personalname" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+			<li id="faculty-info-1"><input id="personalname" type="text" name="personalname" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 
 			<!-- supervisor -->
 
-			<li class="heading" id="faculty-info-2"><label><div class="tooltip">Review Year<span class="tooltiptext">Enter YYYY for the review year.</span></div></label></li>
+			<li class="heading" id="faculty-info-2"><label for="review_year"><div class="tooltip">Review Year<span class="tooltiptext">Enter YYYY for the review year.</span></div></label></li>
 
-			<li id="faculty-info-3"><input type="text" name="review_year" maxlength="4" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li></li>
+			<li id="faculty-info-3"><input id="review_year" type="text" name="review_year" maxlength="4" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 
 		</ul>
 
@@ -521,15 +525,15 @@ select {
 
 			<!-- job title -->
 
-			<li class="heading" id="faculty-info-4"><label><div class="tooltip">Supervisor<span class="tooltiptext">Enter your full name, i.e. 'Joan Smith'</span></div></label></li>
+			<li class="heading" id="faculty-info-4"><label for="supervisor"><div class="tooltip">Supervisor<span class="tooltiptext">Enter your full name, i.e. 'Joan Smith'</span></div></label></li>
 
-			<li id="faculty-info-5"><input type="text" name="supervisor" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+			<li id="faculty-info-5"><input id="supervisor" type="text" name="supervisor" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 
 			<!-- other evaluators -->
 
-			<li class="heading" id="faculty-info-6"><label><div class="tooltip">Other Evaluators<span class="tooltiptext">Enter additional evaluators with full names separated by a ;.</span></div></label></li>
+			<li class="heading" id="faculty-info-6"><label for="other_evaluators"><div class="tooltip">Other Evaluators<span class="tooltiptext">Enter additional evaluators with full names separated by a ;.</span></div></label></li>
 
-			<li id="faculty-info-7"><input type="text" name="other_evaluators" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li></li>
+			<li id="faculty-info-7"><input id="other_evaluators" type="text" name="other_evaluators" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 
 		</ul>
 
@@ -538,16 +542,16 @@ select {
 
 			<!-- division/department -->
 
-			<li class="heading" id="faculty-info-8"><label><div class="tooltip">Job Title<span class="tooltiptext">Enter your formal job title.</span></div></label></li>
+			<li class="heading" id="faculty-info-8"><label for="jobtitle"><div class="tooltip">Job Title<span class="tooltiptext">Enter your formal job title.</span></div></label></li>
 
-			<li id="faculty-info-9"><input type="text" name="jobtitle" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+			<li id="faculty-info-9"><input id="jobtitle" type="text" name="jobtitle" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 
 			<!-- rank -->
 
-			<li class="heading" id="faculty-info-10"><label><div class="tooltip">Rank<span class="tooltiptext">Enter your rank using the drop down menu.</span></div></label></li>
+			<li class="heading" id="faculty-info-10"><label for="rank"><div class="tooltip">Rank<span class="tooltiptext">Enter your rank using the drop down menu.</span></div></label></li>
 
 			<li id="faculty-info-11">
-				<select name="rank" onkeyup="evalUpdate()" onchange="evalUpdate()">
+				<select id="rank" name="rank" onkeyup="evalUpdate()" onchange="evalUpdate()">
 				  <option value="">select rank</option>
 				  <option value="Librarian IV">Librarian IV</option>
 				  <option value="Librarian III">Librarian III</option>
@@ -561,15 +565,15 @@ select {
 
 			<!-- next promotion/tenure date -->
 
-			<li class="heading" id="faculty-info-12"><label><div class="tooltip">Division<span class="tooltiptext">Enter the name of the library division you work in.</span></div></label></li>
+			<li class="heading" id="faculty-info-12"><label for="division"><div class="tooltip">Division<span class="tooltiptext">Enter the name of the library division you work in.</span></div></label></li>
 
-			<li id="faculty-info-13"><input type="text" name="division" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+			<li id="faculty-info-13"><input id="division" type="text" name="division" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 
 			<!-- review year -->
 
-			<li class="heading" id="faculty-info-14"><label><div class="tooltip">Next Promotion Year<span class="tooltiptext">Enter YYYY for your next promotion year.</span></div></label></li>
+			<li class="heading" id="faculty-info-14"><label for="next_promo"><div class="tooltip">Next Promotion Year<span class="tooltiptext">Enter YYYY for your next promotion year.</span></div></label></li>
 
-			<li id="faculty-info-15"><input type="text" name="next_promo" maxlength="4" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li></li>
+			<li id="faculty-info-15"><input id="next_promo" type="text" name="next_promo" maxlength="4" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 
 		</ul>
 
@@ -577,15 +581,15 @@ select {
 
 			<!-- next promotion/tenure date -->
 
-			<li class="heading" id="faculty-info-16"><label><div class="tooltip">Department<span class="tooltiptext">Enter the name of the library department you work in.</span></div></label></li>
+			<li class="heading" id="faculty-info-16"><label for="department"><div class="tooltip">Department<span class="tooltiptext">Enter the name of the library department you work in.</span></div></label></li>
 
-			<li id="faculty-info-17"><input type="text" name="department" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
+			<li id="faculty-info-17"><input id="department" type="text" name="department" maxlength="100" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 
 			<!-- review year -->
 
 			<li id="faculty-info-18" class="empty"><div class="tooltip"></div></li>
 
-			<li id="faculty-info-19"></li></li>
+			<li id="faculty-info-19"></li>
 
 		</ul>
 
@@ -629,14 +633,14 @@ select {
 							<li>College and Department <input type="number" name="doe_serv_coll_dept" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>University Level <input type="number" name="doe_serv_univ" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							</ul></li>
-					<div class="hide"><li>d. Patient Care Unrelated to Instruction</li>
-						<li><ul>
+					<li class="hide">d. Patient Care Unrelated to Instruction</li>
+						<li class="hide"><ul>
 							<li>Direct Patient Care and Clinical Service <input type="number" name="doe_serv_patient" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Quality Assurance Activities <input type="number" name="doe_serv_qaa" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Other Clinical Services <input type="number" name="doe_serv_clinic_serv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Clinical Contract Work or Other Cash Income <input type="number" name="doe_serv_clinic_contract" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Hospital Physician Service for all Patients <input type="number" name="doe_serv_hosp" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-							</ul></li></div>
+							</ul></li>
 				</ul>
 				<h4>Section  IV. Administration</h4>
 				<ul>
@@ -646,13 +650,13 @@ select {
 							<li>Other administrative activities <input type="number" name="doe_admin_other_1" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							</ul></li>
 					<li>b. University Level <input type="number" name="doe_admin_univ_lv" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-					<div class="hide"><li>c. UK Health Care Enterprise</li>
-						<li><ul>
+					<li class="hide">c. UK Health Care Enterprise</li>
+						<li class="hide"><ul>
 							<li>Clinical Division Director/Chief <input type="number" name="doe_admin_cdd" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Medical Director <input type="number" name="doe_admin_md" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Other Position <input type="number" name="doe_admin_other_pos" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 							<li>Other administrative activities <input type="number" name="doe_admin_other_2" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
-							</ul></li></div>
+							</ul></li>
 					<li>d. Fund Raising (Private Gift Solicitation) <input type="number" name="doe_admin_gift" onkeyup="evalUpdate()" onchange="evalUpdate()"/></li>
 				</ul>
 				<h4>Section  V.  Professional Development</h4>
@@ -673,10 +677,10 @@ select {
         <div>
             <div class="footer-text-center">
                 <a href="http://uky.edu" title="University of Kentucky">
-                    <img src="https://libraries.uky.edu/images/uklogo.png" height="60" alt="University of Kentucky">
+                    <img src="images/uklogo.png" height="60" alt="University of Kentucky">
                 </a>
                 <a href="http://libguides.uky.edu/fedgov" title="This library is a Congressionally designated Regional Depository for U.S. Government Publications. Public access to the federal government publications collection is guaranteed by public law.">
-                    <img src="https://libraries.uky.edu/images/fdlp.png" alt="Federal Depository Library">
+                    <img src="images/fdlp.png" alt="Federal Depository Library">
                 </a>
             </div>
         </div>
@@ -852,6 +856,54 @@ function fppaBlocksTableCell(text,width,color="0000FF",first=false,last=false) {
 `);
 }
 
+function fppaBlocksTableCell2(text,width,color="0000FF",first=false,last=false) {
+
+  return (`
+        <w:tc>
+		  <w:tcPr>
+			<w:vAlign w:val="bottom"/>
+            <w:tcW w:w="450" w:type="dxa"/>
+            <w:tcMar>
+              ${first?"":'<w:start w:w="0" w:type="dxa"/>'}
+              <w:end w:w="0" w:type="dxa"/>
+            </w:tcMar>
+		  </w:tcPr>
+          <w:p>
+            <w:r>
+              <w:rPr>
+                <w:sz w:val="28"/>
+                <w:u w:val="thick"/>
+                <w:color w:val="${color}"/>
+              </w:rPr>
+              <w:t>${first?"":'&#xa0;&#xa0;&#xa0;'}</w:t>
+            </w:r>
+		  </w:p>
+        </w:tc>
+        <w:tc>
+		  <w:tcPr>
+			<w:vAlign w:val="bottom"/>
+            <w:tcW w:w="${width}" w:type="dxa"/>
+            <w:tcMar>
+              <w:start w:w="0" w:type="dxa"/>
+              ${last?"":'<w:end w:w="0" w:type="dxa"/>'}
+            </w:tcMar>
+		  </w:tcPr>
+          <w:p>
+            <w:pPr>
+              ${first?'<w:jc w:val="center"/>':""}
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:i/>
+                <w:sz w:val="18"/>
+              </w:rPr>
+              <w:t xml:space="preserve">${text}</w:t>
+            </w:r>
+          </w:p>
+        </w:tc>
+`);
+}
+
 function fppaBlocksTable( levels, widths, color="0000FF" ) {
 	return (`
     <w:tbl>
@@ -866,8 +918,22 @@ function fppaBlocksTable( levels, widths, color="0000FF" ) {
 `);
 }
 
+function fppaBlocksTable2( levels, widths, color="0000FF" ) {
+	return (`
+    <w:tbl>
+      <w:tblPr>
+        <w:tblStyle w:val="a2"/>
+        <w:tblW w:w="0" w:type="auto"/>
+        <w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/>
+      </w:tblPr>
+      <w:tblGrid>${widths.map( w => `<w:gridCol w:w="450"/><w:gridCol w:w="${w}"/>`).join("") }</w:tblGrid>
+      <w:tr>${levels.map( (lvl,i) => fppaBlocksTableCell2( lvl, widths[i], color, i==0, i==levels.length-1 ) ).join("") }</w:tr>
+    </w:tbl>
+`);
+}
+
 function transmogrify( string_content, evaldata ) {
-  const widths = [ 1800, 1800, 1800, 1500, 1800 ];
+  const widths = [ 2200, 2200, 2000 ];
 
   var fppatree = []
   var fppablocks = [];
@@ -884,15 +950,19 @@ function transmogrify( string_content, evaldata ) {
           fppablocks.push( fppaBlocksHeading( "Self Rating:" ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksTable( evaldata.ratings, widths, "0000FF" ) );
+          fppablocks.push( fppaBlocksTable2( evaldata.rare_ratings, widths, "0000FF" ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksHeading( "Description of activities and achievements / justification of rating:" ) );
+		  fppablocks.push( fppaBlocksBlankLineForSelf() );
 		  fppablocks.push( fppaBlocksBlankLineForSelf() );
 		  fppablocks.push( fppaBlocksBlankLineForSelf() );
           fppablocks.push( fppaBlocksHeading( "Supervisor Rating:" ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksTable( evaldata.ratings, widths, "880088" ) );
+          fppablocks.push( fppaBlocksTable2( evaldata.rare_ratings, widths, "880088" ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksHeading( "Supervisor comments and justification of rating:" ) );
+		  fppablocks.push( fppaBlocksBlankLineForSupervisor() );
 		  fppablocks.push( fppaBlocksBlankLineForSupervisor() );
 		  fppablocks.push( fppaBlocksBlankLineForSupervisor() );
           fppablocks.push( fppaBlocksHeading( "Recommended action (if required):" ) );
@@ -912,7 +982,8 @@ function transmogrify( string_content, evaldata ) {
 	.replace(/FPPA_SUPE/,evaldata.person.supervisor)
 	.replace(/FPPA_JOB/,evaldata.person.job_title)
 	.replace(/FPPA_OTHER/,evaldata.person.other_evaluators)
-	.replace(/FPPA_DIVDEPT/,evaldata.person.division)
+	.replace(/FPPA_DIV/,evaldata.person.division)
+	.replace(/FPPA_DEPT/,evaldata.person.department)
 	.replace(/FPPA_RANK/,evaldata.person.rank)
 	.replace(/FPPA_PTDATE/,evaldata.person.next_pt_date)
 	.replace(/FPPA_REVYEAR/,evaldata.person.review_year)
@@ -921,6 +992,7 @@ function transmogrify( string_content, evaldata ) {
 
 }
 
+evalUpdate();
 </script>
 </body>
 </html>
