@@ -67,7 +67,7 @@ function evalUpdate() {
         'Exceeds Expectations'
     ],
     rare_ratings: [
-        'Rare ratings:',
+        'Optional:',
         'Transitional',
         'Special Recognition'
     ],
@@ -87,27 +87,27 @@ function evalUpdate() {
                name: 'Instruction',
                subcats: [
                     {
-                         name: 'Reference Services',
+                         name: 'Primary Assignment: Reference Services',
                          percent: doe_001,
                     },
                     {
-                         name: 'Library Instruction',
+                         name: 'Primary Assignment: Library Instruction',
                          percent: doe_002,
                     },
                     {
-                         name: 'Technical Services',
+                         name: 'Primary Assignment: Technical Services',
                          percent: doe_003,
                     },
                     {
-                         name: 'Information Technology',
+                         name: 'Primary Assignment: Information Technology',
                          percent: doe_004,
                     },
                     {
-                         name: 'Collection Management',
+                         name: 'Primary Assignment: Collection Management',
                          percent: doe_005,
                     },
                     {
-                         name: 'Other Primary Activities',
+                         name: 'Primary Assignment: Other Primary Activities',
                          percent: doe_006,
                     },
                  ]
@@ -125,6 +125,7 @@ function evalUpdate() {
                     },
                     {
                          name: 'Gifts',
+                         full_label: 'Research: Gifts',
                          percent: doe_009,
                     },
                     {
@@ -145,11 +146,11 @@ function evalUpdate() {
                          percent: doe_012,
                     },
                     {
-                         name: 'Service to Institution College and Department',
+                         name: 'Service to Institution: College and Department',
                          percent: doe_013,
                     },
                     {
-                         name: 'Service to Institution University Level',
+                         name: 'Service to Institution: University Level',
                          percent: doe_014,
                     },
                     {
@@ -178,15 +179,16 @@ function evalUpdate() {
                name: 'Administration',
                subcats: [
                     {
-                         name: 'College and Department DGS DUS',
+                         name: 'College and Department: Chair, Vice Chair',
                          percent: doe_020,
                     },
                     {
-                         name: 'College and Department Other',
+                         name: 'College and Department: Other',
                          percent: doe_021,
                     },
                     {
                          name: 'University Level',
+                         full_label: 'Administration: University Level',
                          percent: doe_022,
                     },
                     {
@@ -206,7 +208,8 @@ function evalUpdate() {
                          percent: doe_026,
                     },
                     {
-                         name: 'UK Health Care Enterprise Fund Raising',
+                         name: 'Fund Raising',
+                         full_label: 'Administration: Fund Raising',
                          percent: doe_027,
                     },
 		  ]
@@ -216,14 +219,17 @@ function evalUpdate() {
                subcats: [
                     {
                          name: 'Sabbatical Leave',
+                         full_label: 'Professional Development: Sabbatical Leave',
                          percent: doe_028,
                     },
                     {
                          name: 'Other Approved Leave',
+                         full_label: 'Professional Development: Other Approved Leave',
                          percent: doe_029,
                     },
                     {
                          name: 'Other Development',
+                         full_label: 'Professional Development: Other',
                          percent: doe_030,
                     },
                   ]
@@ -945,7 +951,7 @@ function transmogrify( string_content, evaldata ) {
       for (const subcat of cat.subcats) {
         if (subcat.percent) {
           fppatree.push(fppaTreeEntry( subcat.name, 1, subcat.percent ));
-          fppablocks.push( fppaBlocksGrayBar( `${subcat.name} (${subcat.percent}%)` ) );
+          fppablocks.push( fppaBlocksGrayBar( `${subcat.full_label||subcat.name} (${subcat.percent}%)` ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksHeading( "Self Rating:" ) );
 		  fppablocks.push( "<w:p/>" );
