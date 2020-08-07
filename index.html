@@ -62,6 +62,14 @@ function evalUpdate() {
     // build data file for Word Document generation
     evaldata = {
     ratings: [
+        'Unsatisfactory',
+        'Improvement Expected',
+        '(Provisional)',
+        'Solid',
+        'Distinguished'
+    ],
+/*
+    ratings: [
         'Needs Improvement',
         'Meets Expectations',
         'Exceeds Expectations'
@@ -71,6 +79,7 @@ function evalUpdate() {
         'Transitional',
         'Special Recognition'
     ],
+*/
     person: {
         name: personalName,
         job_title: jobTitle,
@@ -716,7 +725,7 @@ document.getElementById("generate").addEventListener("click",function() {
     .then( document_xml_content => transmogrify( document_xml_content, evaldata ) )
     .then( new_document_xml_content => zip.folder("word").file("document.xml", new_document_xml_content ) )
     .then( () => zip.generateAsync({type:"blob",mimeType:"application/vnd.openxmlformats-officedocument.wordprocessingml.document",compression:"DEFLATE"}) )
-    .then( blob => saveAs( blob, "fppa.docx" ) )
+    .then( blob => saveAs( blob, "eval.docx" ) )
 });
 
 function fppaTreeEntry( name, indent, percent ) {
@@ -939,7 +948,7 @@ function fppaBlocksTable2( levels, widths, color="0000FF" ) {
 }
 
 function transmogrify( string_content, evaldata ) {
-  const widths = [ 2200, 2200, 2000 ];
+  const widths = [ 1500, 1500, 1500, 1500, 1500 ];
 
   var fppatree = []
   var fppablocks = [];
@@ -956,7 +965,7 @@ function transmogrify( string_content, evaldata ) {
           fppablocks.push( fppaBlocksHeading( "Self Rating:" ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksTable( evaldata.ratings, widths, "0000FF" ) );
-          fppablocks.push( fppaBlocksTable2( evaldata.rare_ratings, widths, "0000FF" ) );
+          //fppablocks.push( fppaBlocksTable2( evaldata.rare_ratings, widths, "0000FF" ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksHeading( "Description of activities and achievements / justification of rating:" ) );
 		  fppablocks.push( fppaBlocksBlankLineForSelf() );
@@ -965,7 +974,7 @@ function transmogrify( string_content, evaldata ) {
           fppablocks.push( fppaBlocksHeading( "Supervisor Rating:" ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksTable( evaldata.ratings, widths, "880088" ) );
-          fppablocks.push( fppaBlocksTable2( evaldata.rare_ratings, widths, "880088" ) );
+          //fppablocks.push( fppaBlocksTable2( evaldata.rare_ratings, widths, "880088" ) );
 		  fppablocks.push( "<w:p/>" );
           fppablocks.push( fppaBlocksHeading( "Supervisor comments and justification of rating:" ) );
 		  fppablocks.push( fppaBlocksBlankLineForSupervisor() );
@@ -984,18 +993,25 @@ function transmogrify( string_content, evaldata ) {
   fppablocks = fppablocks.join("");
 
   return string_content
-	.replace(/FPPA_NAME/,evaldata.person.name)
-	.replace(/FPPA_SUPE/,evaldata.person.supervisor)
-	.replace(/FPPA_JOB/,evaldata.person.job_title)
-	.replace(/FPPA_OTHER/,evaldata.person.other_evaluators)
-	.replace(/FPPA_DIV/,evaldata.person.division)
-	.replace(/FPPA_DEPT/,evaldata.person.department)
-	.replace(/FPPA_RANK/,evaldata.person.rank)
-	.replace(/FPPA_PTDATE/,evaldata.person.next_pt_date)
-	.replace(/FPPA_REVYEAR/,evaldata.person.review_year)
+	.replace(/FPPA_NAME/,clean(evaldata.person.name))
+	.replace(/FPPA_SUPE/,clean(evaldata.person.supervisor))
+	.replace(/FPPA_JOB/,clean(evaldata.person.job_title))
+	.replace(/FPPA_OTHER/,clean(evaldata.person.other_evaluators))
+	.replace(/FPPA_DIV/,clean(evaldata.person.division))
+	.replace(/FPPA_DEPT/,clean(evaldata.person.department))
+	.replace(/FPPA_RANK/,clean(evaldata.person.rank))
+	.replace(/FPPA_PTDATE/,clean(evaldata.person.next_pt_date))
+	.replace(/FPPA_REVYEAR/,clean(evaldata.person.review_year))
 	.replace(/FPPA_TREE/,fppatree)
 	.replace(/FPPA_BLOCKS/,fppablocks)
 
+}
+
+function clean(str) {
+	return str
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
 }
 
 evalUpdate();
