@@ -5,6 +5,30 @@
 <meta name=viewport content="width=600">
 <meta name=description content="University of Kentucky Libraries Faculty Evaluation Form Generator.">
 <title>University of Kentucky Libraries Evaluation Form Generator</title>
+<!-- universal header/footer metadata start -->
+<meta name = "hdr.include" content = "1" />
+<meta name = "hdr.home.label" content = "UK Libraries Evaluation Form Generator" />
+<meta name = "hdr.home.link" content = "" />
+<meta name = "hdr.link1.label" content = "" />
+<meta name = "hdr.link1.url" content = "https://" />
+<meta name = "hdr.link2.label" content = "" />
+<meta name = "hdr.link2.url" content = "https://" />
+<meta name = "hdr.link3.label" content = "" />
+<meta name = "hdr.link3.url" content = "https://" />
+<meta name = "hdr.link4.label" content = "" />
+<meta name = "hdr.link4.url" content = "https://" />
+<meta name = "hdr.link5.label" content = "" />
+<meta name = "hdr.link5.url" content = "https://l" />
+<meta name = "hdr.link6.label" content = "" />
+<meta name = "hdr.link6.url" content = "https://" />
+<!-- universal header/footer metadata end -->
+<!-- universal header/footer files start -->
+<link rel="stylesheet" href="https://lib.uky.edu/webparts/ukhdr/2022/css/global_header_footer.css" media="all">
+<script src="https://lib.uky.edu/webparts/ukhdr/2022/js/universalheader.js"></script>
+<!-- universal header/footer files end -->
+<!-- universal header/footer css tweak wider spacing and minimum height -->
+<style>.ukl-ext-clamp .slab__wrapper { max-width: 100% !important; }#wrapper { min-height: 1000px; }</style>
+<!-- universal header/footer css tweak wider spacing  and minimum height end -->
 <script>
 // Copyright University of Kentucky Libraries, 2020
 // Authors: Kathryn Lybarger & Eric Weig
@@ -336,50 +360,11 @@ label {
 #form_help > label {
 	color:#1897d4
 }
-.footer-list {
-       list-style-type:none;
-       color: white;
-       text-align:center;
-}
-.footer-list > li {
-       display: inline-block;
-       padding-left: 5px;
-       padding-right: 5px;
-}
-.footer-list > li > a, a:visited, a:hover {
-       color: white;
-       text-decoration: none;
-}
-.footer-text-center {
-       text-align:center;
-}
-#footer {
-       background:#1B365D;
-       position:absolute;
-       width:100%;
-       padding-top: 25px;
-       padding-bottom: 25px;
-}
 #app_title {
        float: right;
        color: white;
        padding-right: 10px;
        font-size: 25px;
-}
-#uk_branding {
-       width:100%;
-       height:65px;
-       background:#1B365D;
-       text-align:center;
-       margin-left:auto;
-       margin-right:auto;
-}
-#uk_branding > a > img {
-       float: left;
-       padding-top: 5px;
-       padding-bottom: 5px;
-       padding-left: 10px;
-       width: 180px;
 }
 .faculty-information {
        display: grid;
@@ -445,14 +430,6 @@ ol, ul {
     grid-gap: 1rem;
     max-width: 80%;
 }
-.footer-list {
-       list-style-type:none;
-       color: white;
-       text-align:left;
-}
-.footer-list > li {
-       display: block;
-}
 #app_title {
     float: left;
     color: black;
@@ -488,14 +465,6 @@ select {
 </head>
 <body>
 <div id="content">
-<!-- header start -->
-
-<div id="uk_branding">
-	<a href="https://libraries.uky.edu/"><img src="images/libraries-white.png" alt="University of Kentucky Libraries"></a>
-	<span id="app_title">UK Libraries Evaluation Form Generator</span>
-</div>
-
-<!-- header end -->
 
 	<!-- help section start -->
 
@@ -685,31 +654,6 @@ select {
 			<!-- distribution of effort end -->
 
 	<!-- generator entry form end -->
-
-<!-- footer -->
-
-    <div id="footer">
-        <div>
-            <div class="footer-text-center">
-                <a href="http://uky.edu" title="University of Kentucky">
-                    <img src="images/uklogo.png" height="60" alt="University of Kentucky">
-                </a>
-                <a href="http://libguides.uky.edu/fedgov" title="This library is a Congressionally designated Regional Depository for U.S. Government Publications. Public access to the federal government publications collection is guaranteed by public law.">
-                    <img src="images/fdlp.png" alt="Federal Depository Library">
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div>
-                <ul class="footer-list">
-                    <li>© <a href="http://uky.edu" title="University of Kentucky">University of Kentucky</a></li>
-                    <li>An Equal Opportunity University</li>
-                    <li><a href="http://www.uky.edu/accreditation/" title="Accreditation">Accreditation</a></li>
-                    <li><a href="https://directory.uky.edu/" title="Directory">Directory</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
 </div>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.2/jszip.js" integrity="sha256-bBikss7mndcF6KmskR4ihPSlxoyGAxuG4Gf/rzolOTg=" crossorigin="anonymous"></script>
@@ -1016,5 +960,8 @@ function clean(str) {
 
 evalUpdate();
 </script>
+<!-- universal header/footer file part 2 start -->
+<script src="https://lib.uky.edu/webparts/ukhdr/2022/js/combofootershared.js"></script>
+<!-- universal header/footer files part 2 end -->
 </body>
 </html>
